@@ -1,0 +1,96 @@
+{
+  "info": {
+    "_postman_id": "c007f2b5-610a-4832-a388-19fd7d47e5f1",
+    "name": "MSIL Fleet",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2025-04-02T10:33:09.000Z",
+    "createdAt": "2025-04-02T10:10:54.000Z",
+    "lastUpdatedBy": "40581360",
+    "uid": "40581360-c007f2b5-610a-4832-a388-19fd7d47e5f1"
+  },
+  "item": [
+    {
+      "name": "https://api.sandbox.beckn.juspay.in/dashboard/MSIL_PARTNER/account/fetchUnverifiedAccounts",
+      "id": "fcf42cfe-1b95-4eb5-9269-8678568a908a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "https://api.sandbox.beckn.juspay.in/dashboard/MSIL_PARTNER/account/fetchUnverifiedAccounts",
+          "protocol": "https",
+          "host": [
+            "api",
+            "sandbox",
+            "beckn",
+            "juspay",
+            "in"
+          ],
+          "path": [
+            "dashboard",
+            "MSIL_PARTNER",
+            "account",
+            "fetchUnverifiedAccounts"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "40581360-fcf42cfe-1b95-4eb5-9269-8678568a908a"
+    },
+    {
+      "name": "https://api.sandbox.beckn.juspay.in/dashboard/MSIL_PARTNER/account/verifyAccount",
+      "id": "67e20691-cdaf-4a86-85d9-8901f4f7c8da",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fleetOwnerId\": \"string\",\n  \"reason\": \"string\",\n  \"status\": \"Approved\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.sandbox.beckn.juspay.in/dashboard/MSIL_PARTNER/account/verifyAccount",
+          "protocol": "https",
+          "host": [
+            "api",
+            "sandbox",
+            "beckn",
+            "juspay",
+            "in"
+          ],
+          "path": [
+            "dashboard",
+            "MSIL_PARTNER",
+            "account",
+            "verifyAccount"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "40581360-67e20691-cdaf-4a86-85d9-8901f4f7c8da"
+    }
+  ]
+}

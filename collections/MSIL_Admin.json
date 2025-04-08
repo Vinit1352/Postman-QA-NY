@@ -1,0 +1,88 @@
+{
+  "info": {
+    "_postman_id": "8d717fa9-d248-41b2-aae7-c07f69c4b7b8",
+    "name": "MSIL Admin",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2025-03-26T10:53:42.000Z",
+    "createdAt": "2025-03-26T10:39:41.000Z",
+    "lastUpdatedBy": "40581360",
+    "uid": "40581360-8d717fa9-d248-41b2-aae7-c07f69c4b7b8"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "id": "c8fc1659-442d-4e00-9034-f39946cfbfc6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [],
+      "uid": "40581360-c8fc1659-442d-4e00-9034-f39946cfbfc6"
+    },
+    {
+      "name": "https://api.sandbox.beckn.juspay.in/dashboard/840327a8-f17c-4d7c-8199-a583cfaadc5f/operator/register",
+      "id": "de1c24b7-a50e-4e90-97df-3b9a2a7920f6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"vinod.kumar@nammayatri.in\",\n  \"firstName\": \"Vinod\",\n  \"lastName\": \"Kumar\",\n  \"mobileCountryCode\": \"+91\",\n  \"mobileNumber\": \"9742519578\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://dashboard.integ.moving.tech/api/dev/dashboard/:MerchantId/operator/register",
+          "protocol": "https",
+          "host": [
+            "dashboard",
+            "integ",
+            "moving",
+            "tech"
+          ],
+          "path": [
+            "api",
+            "dev",
+            "dashboard",
+            ":MerchantId",
+            "operator",
+            "register"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ],
+          "variable": [
+            {
+              "key": "MerchantId",
+              "value": "840327a8-f17c-4d7c-8199-a583cfaadc5f"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "40581360-de1c24b7-a50e-4e90-97df-3b9a2a7920f6"
+    }
+  ]
+}

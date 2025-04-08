@@ -1,0 +1,79 @@
+{
+  "uid": "38579165-cf55118c-1858-41cd-b720-005d10428968",
+  "id": "cf55118c-1858-41cd-b720-005d10428968",
+  "name": "Production",
+  "owner": "38579165",
+  "createdAt": "2024-12-24T07:47:11.000Z",
+  "updatedAt": "2025-04-01T09:55:32.000Z",
+  "values": [
+    {
+      "key": "baseURL_namma_P",
+      "value": "https://api.beckn.juspay.in/dobpp/ui",
+      "enabled": true,
+      "type": "default"
+    },
+    {
+      "key": "baseUrl_app",
+      "value": "https://api.beckn.juspay.in/pilot/app/v2",
+      "enabled": true
+    },
+    {
+      "key": "baseURL_namma",
+      "value": "https://api.beckn.juspay.in/pilot/app/v2",
+      "enabled": true
+    },
+    {
+      "key": "baseURL_BPP_Dashboard",
+      "value": "https://dashboard.moving.tech/api",
+      "enabled": true,
+      "type": "default"
+    },
+    {
+      "key": "baseURL_namma_d",
+      "value": "https://dashboard.moving.tech/bpp",
+      "enabled": true
+    },
+    {
+      "key": "baseURL_namma_dashboard",
+      "value": "https://dashboard.moving.tech/bpp",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "BAP_dashboard",
+      "value": "https://dashboard.moving.tech/bap",
+      "enabled": true
+    },
+    {
+      "key": "otpcheck",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "customer_searchId",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "customer_authId",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "customer_token",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "curr_app_bookingId",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    }
+  ],
+  "isPublic": false
+}

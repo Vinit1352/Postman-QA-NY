@@ -1,0 +1,183 @@
+{
+  "info": {
+    "_postman_id": "f897128c-6236-4947-a621-cc2d74bf9778",
+    "name": "Driver Favorite Count Flow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2024-12-24T07:38:20.000Z",
+    "createdAt": "2024-12-24T07:38:20.000Z",
+    "lastUpdatedBy": "38579165",
+    "uid": "38579165-f897128c-6236-4947-a621-cc2d74bf9778"
+  },
+  "item": [
+    {
+      "name": "Rate Ride & make Fav",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "380d5c1f-1ed1-4674-b40b-51f3ef345ec7"
+          }
+        }
+      ],
+      "id": "39bc3e55-d01b-476e-81e9-12fc52080554",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{customer_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"rideId\": \"611b8e15-4986-4264-a087-3d8a314f20bf\",\n    \"rating\": 5,\n    \"shouldFavDriver\" : true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl_app}}/feedback/rateRide",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "feedback",
+            "rateRide"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-39bc3e55-d01b-476e-81e9-12fc52080554"
+    },
+    {
+      "name": "Remove a FavDriver for a Rider",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const driverId = \"\"; ",
+              "pm.environment.set(\"driverId\", driverId);"
+            ],
+            "type": "text/javascript",
+            "id": "9161ec6c-44a1-499b-8249-eae98a12ddcb"
+          }
+        }
+      ],
+      "id": "b64b30ac-426d-47af-8b2a-d6c1db8cd5a3",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{customer_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl_app}}/favorites/{{driverId}}/remove",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "favorites",
+            "{{driverId}}",
+            "remove"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-b64b30ac-426d-47af-8b2a-d6c1db8cd5a3"
+    },
+    {
+      "name": "Get FavDrivers for a Rider",
+      "id": "92a30ad5-a2a7-4f73-984f-7c18ab6de099",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{customer_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseUrl_app}}/driver/favorites",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "driver",
+            "favorites"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-92a30ad5-a2a7-4f73-984f-7c18ab6de099"
+    }
+  ]
+}

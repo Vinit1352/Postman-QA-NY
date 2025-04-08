@@ -1,0 +1,61 @@
+{
+  "uid": "38579165-c1712ddf-9dc5-425b-9d16-375aadcd826a",
+  "id": "c1712ddf-9dc5-425b-9d16-375aadcd826a",
+  "name": "Master",
+  "owner": "38579165",
+  "createdAt": "2024-12-24T07:38:24.000Z",
+  "updatedAt": "2025-04-02T07:29:07.000Z",
+  "values": [
+    {
+      "key": "baseURL_namma_P",
+      "value": "https://api.sandbox.beckn.juspay.in/dev/dobpp/ui",
+      "enabled": true,
+      "type": "default"
+    },
+    {
+      "key": "baseUrl_app",
+      "value": "https://api.sandbox.beckn.juspay.in/dev/app/v2",
+      "enabled": true
+    },
+    {
+      "key": "baseURL_namma",
+      "value": "https://api.sandbox.beckn.juspay.in/dev/app/v2",
+      "enabled": true
+    },
+    {
+      "key": "baseURL_BPP_Dashboard",
+      "value": "https://dashboard.integ.moving.tech/api/dev",
+      "enabled": true,
+      "type": "default"
+    },
+    {
+      "key": "baseURL_namma_d",
+      "value": "https://dashboard.integ.moving.tech/api/dev/bpp",
+      "enabled": true
+    },
+    {
+      "key": "baseURL_namma_dashboard",
+      "value": "https://dashboard.integ.moving.tech/api/dev/bpp",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "BAP_dashboard",
+      "value": "https://dashboard.integ.moving.tech/api/dev/bap",
+      "enabled": true
+    },
+    {
+      "key": "otpcheck",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    },
+    {
+      "key": "curr_app_bookingId",
+      "value": "",
+      "enabled": true,
+      "type": "any"
+    }
+  ],
+  "isPublic": false
+}

@@ -1,0 +1,224 @@
+{
+  "info": {
+    "_postman_id": "4b81041f-0637-48c9-9177-89f56310b321",
+    "name": "Exotel Call",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2024-12-24T07:38:23.000Z",
+    "createdAt": "2024-12-24T07:38:23.000Z",
+    "lastUpdatedBy": "38579165",
+    "uid": "38579165-4b81041f-0637-48c9-9177-89f56310b321"
+  },
+  "item": [
+    {
+      "name": "Call Customer Number Copy 2",
+      "id": "6cf3d08b-31a1-4965-a695-9a4bd272ebaf",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_namma_P}}exotel/call/customer/number?CallSid=callCustomer&CallFrom={{driver_number}}&CallTo=8069456455&CallStatus=RINGING",
+          "host": [
+            "{{baseURL_namma_P}}exotel"
+          ],
+          "path": [
+            "call",
+            "customer",
+            "number"
+          ],
+          "query": [
+            {
+              "key": "CallSid",
+              "value": "callCustomer"
+            },
+            {
+              "key": "CallFrom",
+              "value": "{{driver_number}}"
+            },
+            {
+              "key": "CallTo",
+              "value": "8069456455"
+            },
+            {
+              "key": "digits",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "CallStatus",
+              "value": "RINGING"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-6cf3d08b-31a1-4965-a695-9a4bd272ebaf"
+    },
+    {
+      "name": "statusCallBack Copy 2",
+      "id": "b37886db-8bc4-45b9-b96a-cb9ed9fc2ae1",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_namma_P}}/exotel/call/statusCallback?CallSid=callCustomer&DialCallStatus=In_Progress&Legs[0][OnCallDuration]=sd&CallDuration=123&RecordingUrl=www.google.com",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "exotel",
+            "call",
+            "statusCallback"
+          ],
+          "query": [
+            {
+              "key": "CallSid",
+              "value": "callCustomer"
+            },
+            {
+              "key": "DialCallStatus",
+              "value": "In_Progress"
+            },
+            {
+              "key": "Legs[0][OnCallDuration]",
+              "value": "sd"
+            },
+            {
+              "key": "CallDuration",
+              "value": "123"
+            },
+            {
+              "key": "RecordingUrl",
+              "value": "www.google.com"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-b37886db-8bc4-45b9-b96a-cb9ed9fc2ae1"
+    },
+    {
+      "name": "Call Driver Number Copy 2",
+      "id": "165c900a-2ada-421b-aed0-548026e7f801",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "// Call From - User Number\n// Call To - exotel no (From  rideBookingList)\n// callSid should be same for both api, Customer and Driver",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl_app}}/exotel/call/driver/number?CallSid=callDriver&CallFrom={{user_number}}&CallTo=8069456526&CallStatus=IN_PROGRESS",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "exotel",
+            "call",
+            "driver",
+            "number"
+          ],
+          "query": [
+            {
+              "key": "CallSid",
+              "value": "callDriver"
+            },
+            {
+              "key": "CallFrom",
+              "value": "{{user_number}}"
+            },
+            {
+              "key": "CallTo",
+              "value": "8069456526"
+            },
+            {
+              "key": "CallStatus",
+              "value": "IN_PROGRESS"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-165c900a-2ada-421b-aed0-548026e7f801"
+    },
+    {
+      "name": "statusCallBack Copy 2",
+      "id": "51d8e7f3-463d-42ee-9386-25bcc822400c",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl_app}}/exotel/call/statusCallback?CallSid=callDriver&DialCallStatus=COMPLETED&CallDuration=345&RecordingUrl=www.google&Legs[0][OnCallDuration]=6789098989",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "exotel",
+            "call",
+            "statusCallback"
+          ],
+          "query": [
+            {
+              "key": "CallSid",
+              "value": "callDriver"
+            },
+            {
+              "key": "DialCallStatus",
+              "value": "COMPLETED"
+            },
+            {
+              "key": "CallDuration",
+              "value": "345"
+            },
+            {
+              "key": "RecordingUrl",
+              "value": "www.google"
+            },
+            {
+              "key": "Legs[0][OnCallDuration]",
+              "value": "6789098989"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-51d8e7f3-463d-42ee-9386-25bcc822400c"
+    }
+  ]
+}

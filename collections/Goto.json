@@ -1,0 +1,1763 @@
+{
+  "info": {
+    "_postman_id": "95a81810-3277-4c66-8e49-3dccf12edd11",
+    "name": "Goto",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2025-04-02T12:09:16.000Z",
+    "createdAt": "2024-12-24T07:38:23.000Z",
+    "lastUpdatedBy": "38571916",
+    "uid": "38579165-95a81810-3277-4c66-8e49-3dccf12edd11"
+  },
+  "item": [
+    {
+      "name": "Goto apis",
+      "item": [
+        {
+          "name": "goHome/activate",
+          "id": "200f3d89-fb87-49df-a48e-f8082e932a19",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/goHome/activate?homeLocationId=9eabc899-14c1-4604-a24b-b57b2e97caa1&currentLocation=14.94945955,76.09145103",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "goHome",
+                "activate"
+              ],
+              "query": [
+                {
+                  "key": "homeLocationId",
+                  "value": "9aa98ed7-4b18-4685-abb7-cc1374f29c5b",
+                  "disabled": true
+                },
+                {
+                  "key": "homeLocationId",
+                  "value": "9eabc899-14c1-4604-a24b-b57b2e97caa1"
+                },
+                {
+                  "key": "currentLocation",
+                  "value": "14.94945955,76.09145103"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-200f3d89-fb87-49df-a48e-f8082e932a19"
+        },
+        {
+          "name": "goHome/deactivate",
+          "id": "e808b532-58a2-47b7-804c-adcd8737f2e0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/goHome/deactivate?homeLocationId=9aa98ed7-4b18-4685-abb7-cc1374f29c5b",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "goHome",
+                "deactivate"
+              ],
+              "query": [
+                {
+                  "key": "homeLocationId",
+                  "value": "9aa98ed7-4b18-4685-abb7-cc1374f29c5b"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-e808b532-58a2-47b7-804c-adcd8737f2e0"
+        },
+        {
+          "name": "goHome/add",
+          "id": "df218deb-1f1c-4d35-ae0e-fcd6696d7bdc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tag\": \"batching_Destination\",\n    \"address\": \"batching_destination\",\n    \"position\": {\n        \"lat\": 14.96683678,\n        \"lon\": 76.11818821\n    }\n}"
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/goHome/add",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "goHome",
+                "add"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-df218deb-1f1c-4d35-ae0e-fcd6696d7bdc"
+        },
+        {
+          "name": "goHome/get",
+          "id": "85665851-2e4b-498c-96eb-fc0b824a0009",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/goHome/get",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "goHome",
+                "get"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-85665851-2e4b-498c-96eb-fc0b824a0009"
+        },
+        {
+          "name": "goHome/delete",
+          "id": "a4ff0a28-ab8a-4509-8f86-bb87596d7c57",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/goHome/delete?homeLocationId=3ef48371-6dc5-4edf-99d4-331f0c6ceace",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "goHome",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "homeLocationId",
+                  "value": "3ef48371-6dc5-4edf-99d4-331f0c6ceace"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-a4ff0a28-ab8a-4509-8f86-bb87596d7c57"
+        },
+        {
+          "name": "goHome/update",
+          "id": "877bfb85-078d-4aee-981e-de08c726cc02",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tag\": \"string\",\n  \"address\": \"string\",\n  \"position\": {\n    \"lat\": 0,\n    \"lon\": 0\n  }\n}"
+            },
+            "url": {
+              "raw": "https://api.sandbox.beckn.juspay.in/ui/driver/goHome/update?homeLocationId=1234567",
+              "protocol": "https",
+              "host": [
+                "api",
+                "sandbox",
+                "beckn",
+                "juspay",
+                "in"
+              ],
+              "path": [
+                "ui",
+                "driver",
+                "goHome",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "homeLocationId",
+                  "value": "1234567"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-877bfb85-078d-4aee-981e-de08c726cc02"
+        }
+      ],
+      "id": "29ffd960-6528-434f-b642-82c991be1293",
+      "uid": "38579165-29ffd960-6528-434f-b642-82c991be1293"
+    },
+    {
+      "name": "BPP_dashboard_Goto Copy",
+      "item": [
+        {
+          "name": "/user/login Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.collectionVariables.set(\"dashboard_token\", jsonData.authToken);"
+                ],
+                "type": "text/javascript",
+                "id": "f4da6ef4-8043-4877-990e-0a8bc7690ae6"
+              }
+            }
+          ],
+          "id": "7a62f9fb-05de-474d-b4d4-4bd9df93d4a0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"gowthami.allu.ext@juspay.in\",\n  \"password\": \"9603578766\",\n  \"merchantId\": \"NAMMA_YATRI_PARTNER\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/login",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d227cb01-44ed-467f-9cf4-cb82a28ca34f",
+              "name": "Untitled Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"consectetur irure laboris anim sit\",\n  \"password\": \"velit deserunt sed mollit do\",\n  \"merchantId\": \"eu proident mollit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"authToken\": \"sit do\",\n  \"message\": \"qui ut pro\"\n}",
+              "uid": "38579165-d227cb01-44ed-467f-9cf4-cb82a28ca34f"
+            },
+            {
+              "id": "917a6c24-12ab-4600-85bd-2dc9d9a064f7",
+              "name": "Invalid `body`",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"consectetur irure laboris anim sit\",\n  \"password\": \"velit deserunt sed mollit do\",\n  \"merchantId\": \"eu proident mollit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-917a6c24-12ab-4600-85bd-2dc9d9a064f7"
+            }
+          ],
+          "uid": "38579165-7a62f9fb-05de-474d-b4d4-4bd9df93d4a0"
+        },
+        {
+          "name": "BPP/getHomeLocation",
+          "id": "f673ceea-bb53-437e-9551-e88684423a80",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{dashboard_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/getHomeLocation",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "getHomeLocation"
+              ],
+              "variable": [
+                {
+                  "id": "682188bc-ec45-4d8e-aac3-0bcccdf76949",
+                  "key": "merchantId",
+                  "value": "NAMMA_YATRI_PARTNER"
+                },
+                {
+                  "id": "c6636ecf-16ac-4052-a0cf-748e6ff4a257",
+                  "key": "driverId",
+                  "value": "0f5becec-5251-43b7-a15a-f0f30ab8ff97"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-f673ceea-bb53-437e-9551-e88684423a80"
+        },
+        {
+          "name": "BPP/updateHomeLocation",
+          "id": "27ece8c1-0ad8-44f4-a922-3bacfb679e23",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{dashboard_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n            \"tag\": \"Location3\",\n            \"id\": \"432b7eb5-c171-4c6b-8b01-77a68c6759dd\",\n            \"lat\": 13.84085235490646,\n            \"address\": \"SH 116, Ubrani, Karnataka 577213\",\n            \"lon\": 75.87340272152018\n        }"
+            },
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/updateHomeLocation",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "updateHomeLocation"
+              ],
+              "variable": [
+                {
+                  "id": "49c2b4cf-898e-4d93-8a5e-1733936a34d5",
+                  "key": "merchantId",
+                  "value": "NAMMA_YATRI_PARTNER"
+                },
+                {
+                  "id": "40d347a2-f050-44c9-bc2d-098fe0b207b3",
+                  "key": "driverId",
+                  "value": "0f5becec-5251-43b7-a15a-f0f30ab8ff97"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-27ece8c1-0ad8-44f4-a922-3bacfb679e23"
+        },
+        {
+          "name": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId//incrementGoToCount",
+          "id": "9e559240-58ab-4076-ab13-31f0f18fd963",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/incrementGoToCount",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "incrementGoToCount"
+              ],
+              "variable": [
+                {
+                  "id": "fc206222-b090-4287-86de-4a84529d72f8",
+                  "key": "merchantId",
+                  "value": "NAMMA_YATRI_PARTNER"
+                },
+                {
+                  "id": "895dde80-cd8c-4d0b-bd86-37054e6e7fe5",
+                  "key": "driverId",
+                  "value": "0f5becec-5251-43b7-a15a-f0f30ab8ff97"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-9e559240-58ab-4076-ab13-31f0f18fd963"
+        }
+      ],
+      "id": "a6427d55-478c-4d62-927a-527a541249ac",
+      "uid": "38579165-a6427d55-478c-4d62-927a-527a541249ac"
+    },
+    {
+      "name": "NYP_Subscription Copy",
+      "item": [
+        {
+          "name": "/auth Copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e9343e96-a7fd-4d01-af24-48f729e48ae8",
+                "exec": [
+                  "pm.variables.set(\"driver_number\",8762253248);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "b418697a-17d5-4cf0-b16e-683d5917ef0a",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "pm.test(\"Verified whether status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (responseCode.code !== 200) ",
+                  "{",
+                  "    postman.setNextRequest(null)",
+                  "}",
+                  "",
+                  "else",
+                  "{",
+                  "    pm.collectionVariables.set(\"curr_rider_authId\", jsonData.authId);",
+                  "} ",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "f32ec49e-d5d6-431d-ab16-4f69f55fa9d9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"mobileNumber\": \"{{driver_number}}\",\n    \"mobileCountryCode\": \"+91\",\n    \"merchantId\": \"7f7896dd-787e-4a0b-8675-e9e6fe93bb8f\"\n\n   // 7f7896dd-787e-4a0b-8675-e9e6fe93bb8f\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/auth",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-f32ec49e-d5d6-431d-ab16-4f69f55fa9d9"
+        },
+        {
+          "name": "/auth/:authId/verify Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.test(\"Verified whether status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (responseCode.code !== 200) ",
+                  "{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  "",
+                  "else",
+                  "{",
+                  "    pm.collectionVariables.set(\"curr_token\", jsonData.token);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "id": "e5c820f9-7db3-4387-9fb1-1a85104f7a17"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000);",
+                  "pm.variables.set(\"login_otp\",7891);"
+                ],
+                "type": "text/javascript",
+                "id": "2edc371e-844f-4934-aedd-a478acc086b4"
+              }
+            }
+          ],
+          "id": "c5a0aa92-37af-4f25-8df3-a12e0932ad9f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"otp\": \"{{login_otp}}\",\n    \"deviceToken\": \"5497873d-10ca-42f3-8a32-22de4c916026\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/auth/:authId/verify",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "auth",
+                ":authId",
+                "verify"
+              ],
+              "variable": [
+                {
+                  "id": "51fdc18e-ee12-4078-aa3f-92d71321ad20",
+                  "key": "authId",
+                  "value": "{{curr_rider_authId}}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-c5a0aa92-37af-4f25-8df3-a12e0932ad9f"
+        },
+        {
+          "name": "Plan list API",
+          "id": "b7c34b44-766e-4087-afcf-70e4b15fb5ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/list",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "list"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-b7c34b44-766e-4087-afcf-70e4b15fb5ee"
+        },
+        {
+          "name": "Plan suspend",
+          "id": "a14c4abd-4329-4c66-a168-ed0e8a16ea29",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/suspend?planId=18911beb-28ba-456d-8cca-4d019461d2b0",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "suspend"
+              ],
+              "query": [
+                {
+                  "key": "planId",
+                  "value": "18911beb-28ba-456d-8cca-4d019461d2b0"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-a14c4abd-4329-4c66-a168-ed0e8a16ea29"
+        },
+        {
+          "name": "Plan resume",
+          "id": "dfb4ec37-b591-4896-a927-0108b8fcbc84",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/resume?planId=4bbd7ff4-fc90-12e6-8a9a-4091ec1e9a43",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "resume"
+              ],
+              "query": [
+                {
+                  "key": "planId",
+                  "value": "4bbd7ff4-fc90-12e6-8a9a-4091ec1e9a43"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-dfb4ec37-b591-4896-a927-0108b8fcbc84"
+        },
+        {
+          "name": "CurrentPlan",
+          "id": "c573ee18-f6bf-46b9-b2e5-48d95c014d4e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/currentPlan",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "currentPlan"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-c573ee18-f6bf-46b9-b2e5-48d95c014d4e"
+        },
+        {
+          "name": "SubscribePlan",
+          "id": "eeaa963e-eecb-4e36-a079-5ead994a408d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/:planId/subscribe",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                ":planId",
+                "subscribe"
+              ],
+              "variable": [
+                {
+                  "id": "9e5ede06-1734-4f2c-8f57-ada7c84b0990",
+                  "key": "planId",
+                  "value": "18911beb-28ba-456d-8cca-4d019461d2b0"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-eeaa963e-eecb-4e36-a079-5ead994a408d"
+        },
+        {
+          "name": "PlanSelect",
+          "id": "e0bd963b-9f80-4317-9229-fed2d523bd43",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/:planId/select",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                ":planId",
+                "select"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "planId",
+                  "value": "4bbd7ff4-fc90-12e6-8a9a-4091ec1e9a43"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-e0bd963b-9f80-4317-9229-fed2d523bd43"
+        },
+        {
+          "name": "https://fcm.googleapis.com/v1/projects/namma-yatri/messages:send",
+          "id": "01076f7d-5b9c-4df9-91d1-50cb5d05827a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer ya29.a0AfB_byBNYNn26Ka1T8T2L4l7E5pJbibCobNvCrn_0ZKY6YnWR4jW_OzIQ-m-FUy3JjE3gafRVx8xwlp1BNrPh0b2n4AdYHOywq0VfmlB5l2iJLIoivLKOu53gJ0sOYeLy8lN8aYcIWO6iYtH1PPFNHf8yPDPR7Vqge5JWAaCgYKAdASARISFQHsvYlsvjTpKlKvRY_TbbpJQNvuRA0173"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"message\": {\n        \"token\": \"{{token}}\",\n        \"android\": {\n            \"data\": {\n                \"notification_type\": \"DRIVER_NOTIFY\",\n                \"show_notification\": \"true\",\n                \"entity_type\": \"Case\",\n                \"entity_ids\": \"f071d5a7-fe7f-4b98-b95f-933df86bc193\",\n                \"notification_json\": {\n                    \"title\": \"Namma Yatri Plans at Rs 25/day starting 1st September\", \n                    \"body\": \"But you can get the plan at just Rs 5 per day, for all of September if you register for UPI Autopay today! Today is the last day for this unbelievable offer! Offer changes tomorrow. Join Plan NOW!\", \n                    \"icon\": \"https://firebasestorage.googleapis.com/v0/b/jp-beckn-dev.appspot.com/o/Last%20Day%20Offer%20%20Overlay.png?alt=media&token=d00736fa-cb5a-4141-81ec-d705ca372609\", \n                    \"tag\": \"MESSAGE\",\n                    \"sound\": \"default\",\n                    \"channel_id\": \"General\"\n                },\n                \"driver_notification_payload\": {\n                    \"title\": \"Namma Yatri Plans at Rs 25/day starting 1st September\",\n                    \"description\": \"But you can get the plan at just Rs 5 per day, for all of September if you register for UPI Autopay today! Today is the last day for this unbelievable offer! Offer changes tomorrow. Join Plan NOW!\",\n                    \"imageUrl\": \"https://firebasestorage.googleapis.com/v0/b/jp-beckn-dev.appspot.com/o/Last%20Day%20Offer%20%20Overlay.png?alt=media&token=d00736fa-cb5a-4141-81ec-d705ca372609\",\n                    \"okButtonText\": \"Subscribe Now\",\n                    \"cancelButtonText\": \"Maybe Later\",\n                    \"actions\": [\"OPEN_SUBSCRIPTION\"],\n                    \"link\": \"http://www.google.com\",\n                    \"endPoint\": \"https://api.sandbox.beckn.juspay.in/dev/dobpp/ui/driver/setActivity?active=false&mode=ONLINE\",\n                    \"method\": \"POST\",\n                    \"reqBody\": {},\n                    \"titleVisibility\": true,\n                    \"descriptionVisibility\": true,\n                    \"buttonOkVisibility\": true,\n                    \"buttonCancelVisibility\": true,\n                    \"buttonLayoutVisibility\": true,\n                    \"imageVisibility\": true\n                }\n            }\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "https://fcm.googleapis.com/v1/projects/namma-yatri/messages:send",
+              "protocol": "https",
+              "host": [
+                "fcm",
+                "googleapis",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "projects",
+                "namma-yatri",
+                "messages:send"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-01076f7d-5b9c-4df9-91d1-50cb5d05827a"
+        }
+      ],
+      "id": "4998c490-5445-4049-8a4f-a6e2be7d086f",
+      "uid": "38579165-4998c490-5445-4049-8a4f-a6e2be7d086f"
+    },
+    {
+      "name": "NYP_Subscription Copy 2",
+      "item": [
+        {
+          "name": "/auth Copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e9343e96-a7fd-4d01-af24-48f729e48ae8",
+                "exec": [
+                  "pm.variables.set(\"driver_number\",6378299815);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "b418697a-17d5-4cf0-b16e-683d5917ef0a",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "pm.test(\"Verified whether status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (responseCode.code !== 200) ",
+                  "{",
+                  "    postman.setNextRequest(null)",
+                  "}",
+                  "",
+                  "else",
+                  "{",
+                  "    pm.collectionVariables.set(\"curr_rider_authId\", jsonData.authId);",
+                  "} ",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "bbe7d31b-d08b-43aa-9db1-105c5cb05dcd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"mobileNumber\": \"{{driver_number}}\",\n    \"mobileCountryCode\": \"+91\",\n    \"merchantId\": \"7f7896dd-787e-4a0b-8675-e9e6fe93bb8f\"\n\n   // 7f7896dd-787e-4a0b-8675-e9e6fe93bb8f\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/auth",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-bbe7d31b-d08b-43aa-9db1-105c5cb05dcd"
+        },
+        {
+          "name": "/auth/:authId/verify Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.test(\"Verified whether status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "if (responseCode.code !== 200) ",
+                  "{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  "",
+                  "else",
+                  "{",
+                  "    pm.collectionVariables.set(\"curr_token\", jsonData.token);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "id": "e5c820f9-7db3-4387-9fb1-1a85104f7a17"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000);",
+                  "pm.variables.set(\"login_otp\",7891);"
+                ],
+                "type": "text/javascript",
+                "id": "2edc371e-844f-4934-aedd-a478acc086b4"
+              }
+            }
+          ],
+          "id": "65bf27de-34d7-40a1-83b7-e489d516a91a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"otp\": \"{{login_otp}}\",\n    \"deviceToken\": \"5497873d-10ca-42f3-8a32-22de4c916026\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/auth/:authId/verify",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "auth",
+                ":authId",
+                "verify"
+              ],
+              "variable": [
+                {
+                  "id": "51fdc18e-ee12-4078-aa3f-92d71321ad20",
+                  "key": "authId",
+                  "value": "{{curr_rider_authId}}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-65bf27de-34d7-40a1-83b7-e489d516a91a"
+        },
+        {
+          "name": "Plan list API",
+          "id": "bb7c8a25-c394-4a38-897f-2b30f4324031",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "d08acfbc-f9e3-4ae3-8c3d-7e3236823053",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/list",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "list"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-bb7c8a25-c394-4a38-897f-2b30f4324031"
+        },
+        {
+          "name": "Plan suspend",
+          "id": "072d3c0e-f4fd-4199-a72c-7b1663c36e3f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{rider_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/suspend?planId=18911beb-28ba-456d-8cca-4d019461d2b0",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "suspend"
+              ],
+              "query": [
+                {
+                  "key": "planId",
+                  "value": "18911beb-28ba-456d-8cca-4d019461d2b0"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-072d3c0e-f4fd-4199-a72c-7b1663c36e3f"
+        },
+        {
+          "name": "Plan resume",
+          "id": "a50f4506-7f64-4e81-a85a-88084d3f21b8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/resume?planId=6c686fad-26b0-77db-99b8-0519f53272d9\n",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "resume"
+              ],
+              "query": [
+                {
+                  "key": "planId",
+                  "value": "6c686fad-26b0-77db-99b8-0519f53272d9\n"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-a50f4506-7f64-4e81-a85a-88084d3f21b8"
+        },
+        {
+          "name": "CurrentPlan",
+          "id": "e29bf2e8-6229-4c58-af8f-e5d416d356ba",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/currentPlan",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                "currentPlan"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-e29bf2e8-6229-4c58-af8f-e5d416d356ba"
+        },
+        {
+          "name": "SubscribePlan",
+          "id": "3e86c367-7531-457a-b029-4b6a0bcb766f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/:planId/subscribe",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                ":planId",
+                "subscribe"
+              ],
+              "variable": [
+                {
+                  "id": "9e5ede06-1734-4f2c-8f57-ada7c84b0990",
+                  "key": "planId",
+                  "value": "18911beb-28ba-456d-8cca-4d019461d2b0"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-3e86c367-7531-457a-b029-4b6a0bcb766f"
+        },
+        {
+          "name": "PlanSelect",
+          "id": "24d6359c-1688-4389-9d7b-b06417444db0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{curr_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/plan/:planId/select",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "plan",
+                ":planId",
+                "select"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "id": "b33db87e-fcdc-4d34-87a1-bff87e32653f",
+                  "key": "planId",
+                  "value": "c60d279f-62e4-b16a-c686-a49b75747bc5"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-24d6359c-1688-4389-9d7b-b06417444db0"
+        },
+        {
+          "name": "https://fcm.googleapis.com/v1/projects/namma-yatri/messages:send",
+          "id": "ae5ab5ca-3670-4ff5-bbff-7a3b9764bccf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer ya29.a0AfB_byBNYNn26Ka1T8T2L4l7E5pJbibCobNvCrn_0ZKY6YnWR4jW_OzIQ-m-FUy3JjE3gafRVx8xwlp1BNrPh0b2n4AdYHOywq0VfmlB5l2iJLIoivLKOu53gJ0sOYeLy8lN8aYcIWO6iYtH1PPFNHf8yPDPR7Vqge5JWAaCgYKAdASARISFQHsvYlsvjTpKlKvRY_TbbpJQNvuRA0173"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"message\": {\n        \"token\": \"{{token}}\",\n        \"android\": {\n            \"data\": {\n                \"notification_type\": \"DRIVER_NOTIFY\",\n                \"show_notification\": \"true\",\n                \"entity_type\": \"Case\",\n                \"entity_ids\": \"f071d5a7-fe7f-4b98-b95f-933df86bc193\",\n                \"notification_json\": {\n                    \"title\": \"Namma Yatri Plans at Rs 25/day starting 1st September\", \n                    \"body\": \"But you can get the plan at just Rs 5 per day, for all of September if you register for UPI Autopay today! Today is the last day for this unbelievable offer! Offer changes tomorrow. Join Plan NOW!\", \n                    \"icon\": \"https://firebasestorage.googleapis.com/v0/b/jp-beckn-dev.appspot.com/o/Last%20Day%20Offer%20%20Overlay.png?alt=media&token=d00736fa-cb5a-4141-81ec-d705ca372609\", \n                    \"tag\": \"MESSAGE\",\n                    \"sound\": \"default\",\n                    \"channel_id\": \"General\"\n                },\n                \"driver_notification_payload\": {\n                    \"title\": \"Namma Yatri Plans at Rs 25/day starting 1st September\",\n                    \"description\": \"But you can get the plan at just Rs 5 per day, for all of September if you register for UPI Autopay today! Today is the last day for this unbelievable offer! Offer changes tomorrow. Join Plan NOW!\",\n                    \"imageUrl\": \"https://firebasestorage.googleapis.com/v0/b/jp-beckn-dev.appspot.com/o/Last%20Day%20Offer%20%20Overlay.png?alt=media&token=d00736fa-cb5a-4141-81ec-d705ca372609\",\n                    \"okButtonText\": \"Subscribe Now\",\n                    \"cancelButtonText\": \"Maybe Later\",\n                    \"actions\": [\"OPEN_SUBSCRIPTION\"],\n                    \"link\": \"http://www.google.com\",\n                    \"endPoint\": \"https://api.sandbox.beckn.juspay.in/dev/dobpp/ui/driver/setActivity?active=false&mode=ONLINE\",\n                    \"method\": \"POST\",\n                    \"reqBody\": {},\n                    \"titleVisibility\": true,\n                    \"descriptionVisibility\": true,\n                    \"buttonOkVisibility\": true,\n                    \"buttonCancelVisibility\": true,\n                    \"buttonLayoutVisibility\": true,\n                    \"imageVisibility\": true\n                }\n            }\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "https://fcm.googleapis.com/v1/projects/namma-yatri/messages:send",
+              "protocol": "https",
+              "host": [
+                "fcm",
+                "googleapis",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "projects",
+                "namma-yatri",
+                "messages:send"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-ae5ab5ca-3670-4ff5-bbff-7a3b9764bccf"
+        }
+      ],
+      "id": "10d32e2b-c4b3-4b53-8833-5e858a09625f",
+      "uid": "38579165-10d32e2b-c4b3-4b53-8833-5e858a09625f"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "b71bd060-4d98-41ff-a939-10a82fac3fdb",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "272a99f5-6909-4bb6-b828-e57aeec8f280",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "curr_rider_authId",
+      "value": ""
+    },
+    {
+      "key": "curr_token",
+      "value": "e51ad1d2-4865-473a-b06e-2c72f7ab6055"
+    },
+    {
+      "key": "rider_token",
+      "value": "493db387-53a1-47b6-850b-0a86f947b2ff"
+    }
+  ]
+}

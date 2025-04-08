@@ -1,0 +1,2600 @@
+{
+  "info": {
+    "_postman_id": "4d024a23-caf3-408a-b45d-7c8c1ebeb49d",
+    "name": "BPP_AlertMassage_AutoCollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2024-12-24T07:36:05.000Z",
+    "createdAt": "2024-12-24T07:36:05.000Z",
+    "lastUpdatedBy": "38579165",
+    "uid": "38579165-4d024a23-caf3-408a-b45d-7c8c1ebeb49d"
+  },
+  "item": [
+    {
+      "name": "/user/login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"dashboard_token_auto\", jsonData.authToken);",
+              "pm.test(\"verified whether Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "id": "a4d8adbb-3ebe-423e-b187-2abf391d54b4"
+          }
+        }
+      ],
+      "id": "c8962dc0-2c7e-4acf-8dec-d751d4c85497",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"ajay.kumar@juspay.in\",\n  \"password\": \"8340217370\",\n  \"merchantId\": \"JATRI_SAATHI_PARTNER\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/login",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "user",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "b0f1b8bb-272a-4527-b238-5e5d6edf5220",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"Lorem adipisicing proident\",\n  \"password\": \"deserunt et cillum Ut eiusmod\",\n  \"merchantId\": \"ad tem\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"authToken\": \"ea labore\",\n  \"message\": \"irure in\"\n}",
+          "uid": "38579165-b0f1b8bb-272a-4527-b238-5e5d6edf5220"
+        },
+        {
+          "id": "feb4da9c-0488-4a4b-8128-2a7fc225f409",
+          "name": "Invalid `body`",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"Lorem adipisicing proident\",\n  \"password\": \"deserunt et cillum Ut eiusmod\",\n  \"merchantId\": \"ad tem\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "login"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-feb4da9c-0488-4a4b-8128-2a7fc225f409"
+        }
+      ],
+      "uid": "38579165-c8962dc0-2c7e-4acf-8dec-d751d4c85497"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/addLink Copy",
+      "id": "df8d48d5-0ab6-4811-8d7c-0994a5947364",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://youtu.be/qfdAqkZgKnU\",\n  \"fileType\": \"VideoLink\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/addLink",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            "addLink"
+          ],
+          "variable": [
+            {
+              "id": "421fb459-8899-4c8d-acb2-6e141a14408b",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "7370063c-5e24-427f-a727-1a4c48fa9c93",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"et\",\n  \"fileType\": \"Image\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/addLink",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "addLink"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"fileId\": \"laborum ex id dolore\"\n}",
+          "uid": "38579165-7370063c-5e24-427f-a727-1a4c48fa9c93"
+        },
+        {
+          "id": "ab7ff56f-3af6-4387-a576-5ea680e536be",
+          "name": "Invalid `body` or `token`",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"et\",\n  \"fileType\": \"Image\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/addLink",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "addLink"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-ab7ff56f-3af6-4387-a576-5ea680e536be"
+        },
+        {
+          "id": "3ee66bdf-69f9-4389-b2ae-b7886ceeb509",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"et\",\n  \"fileType\": \"Image\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/addLink",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "addLink"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-3ee66bdf-69f9-4389-b2ae-b7886ceeb509"
+        },
+        {
+          "id": "28010c3e-d037-44e8-8954-eac4d354d51d",
+          "name": "`merchantId` not found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"et\",\n  \"fileType\": \"Image\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/addLink",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "addLink"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-28010c3e-d037-44e8-8954-eac4d354d51d"
+        }
+      ],
+      "uid": "38579165-df8d48d5-0ab6-4811-8d7c-0994a5947364"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/uploadFile Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"message_fileId\", jsonData.fileId);",
+              "pm.test(\"verified whether Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "id": "a02fbdbf-3164-4639-a298-5729c40ba605"
+          }
+        }
+      ],
+      "id": "a740fc11-9eac-4092-9c4a-8d45a888968d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "/Users/ajay.kumar/Downloads/DL_AutoM.png"
+            },
+            {
+              "key": "fileType",
+              "value": "Image",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/uploadFile",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            "uploadFile"
+          ],
+          "variable": [
+            {
+              "id": "a82256f0-6976-4ed2-a284-3a034631fa8f",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "c4706f2e-7f16-45dc-b540-e3179ee35a7b",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/uploadFile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "uploadFile"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"fileId\": \"laborum ex id dolore\"\n}",
+          "uid": "38579165-c4706f2e-7f16-45dc-b540-e3179ee35a7b"
+        },
+        {
+          "id": "22169e59-eca9-469b-b112-bf305a29965f",
+          "name": "Invalid `token`",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/uploadFile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "uploadFile"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-22169e59-eca9-469b-b112-bf305a29965f"
+        },
+        {
+          "id": "ffb5e6b8-b056-40af-9ba7-29c33d75393c",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/uploadFile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "uploadFile"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-ffb5e6b8-b056-40af-9ba7-29c33d75393c"
+        },
+        {
+          "id": "aeb50427-7926-4be6-bf0a-0062980e9473",
+          "name": "`merchantId` not found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/uploadFile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "uploadFile"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-aeb50427-7926-4be6-bf0a-0062980e9473"
+        }
+      ],
+      "uid": "38579165-a740fc11-9eac-4092-9c4a-8d45a888968d"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/add Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"msgId\", jsonData.messageId);",
+              "pm.test(\"verified whether Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "id": "a1d32360-036e-4b40-bfa8-40a1eab3a18d"
+          }
+        }
+      ],
+      "id": "ba94010e-d6f8-4e86-a65d-db4fa09d94df",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"_type\": {\n    \"tag\": \"Action\",\n    \"contents\": \"\"\n  },\n  \"title\": \"Regression\",\n  \"description\": \"\",\n  \"shortDescription\" : \"123trip with 10 rupees trip\",\n  \"translations\": [\n    {\n      \"language\": \"HINDI\",\n      \"title\": \"जाँच चल रही है\",\n      \"description\": \"check123\",\n     \"shortDescription\" : \"123hello tip will be added\"\n    },\n    {\n      \"language\": \"TAMIL\",\n      \"title\": \"சோதனை நடக்கிறது\",\n      \"description\": \"Excepteur velit\",\n       \"shortDescription\" : \"123Accept trip with trip 20 rupees\"\n    }\n  ],\n  \"mediaFiles\": [\n    \"{{message_fileId}}\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/add",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            "add"
+          ],
+          "variable": [
+            {
+              "id": "1b847a91-fee9-44fe-b89d-4f00be7b6040",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "5801b8d9-dc08-47b4-9801-0662692d9175",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_type\": {\n    \"tag\": \"Action\",\n    \"contents\": \"aliquip laborum\"\n  },\n  \"title\": \"consectetur quis cupidatat culpa enim\",\n  \"description\": \"incididunt dolore minim\",\n  \"translations\": [\n    {\n      \"language\": \"TAMIL\",\n      \"title\": \"ut culpa dolore\",\n      \"description\": \"veniam ex amet\"\n    },\n    {\n      \"language\": \"MALAYALAM\",\n      \"title\": \"Excepteur labore magna\",\n      \"description\": \"elit eiusmod\"\n    }\n  ],\n  \"mediaFiles\": [\n    \"laboris et commodo dolor id\",\n    \"anim magna\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "add"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"messageId\": \"ipsum\"\n}",
+          "uid": "38579165-5801b8d9-dc08-47b4-9801-0662692d9175"
+        },
+        {
+          "id": "8af0749c-3fce-491b-957f-abd2d8519b54",
+          "name": "Invalid `body` or `token`",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_type\": {\n    \"tag\": \"Action\",\n    \"contents\": \"aliquip laborum\"\n  },\n  \"title\": \"consectetur quis cupidatat culpa enim\",\n  \"description\": \"incididunt dolore minim\",\n  \"translations\": [\n    {\n      \"language\": \"TAMIL\",\n      \"title\": \"ut culpa dolore\",\n      \"description\": \"veniam ex amet\"\n    },\n    {\n      \"language\": \"MALAYALAM\",\n      \"title\": \"Excepteur labore magna\",\n      \"description\": \"elit eiusmod\"\n    }\n  ],\n  \"mediaFiles\": [\n    \"laboris et commodo dolor id\",\n    \"anim magna\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "add"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-8af0749c-3fce-491b-957f-abd2d8519b54"
+        },
+        {
+          "id": "1d602d14-4031-4d6d-9569-784be0ab18f2",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_type\": {\n    \"tag\": \"Action\",\n    \"contents\": \"aliquip laborum\"\n  },\n  \"title\": \"consectetur quis cupidatat culpa enim\",\n  \"description\": \"incididunt dolore minim\",\n  \"translations\": [\n    {\n      \"language\": \"TAMIL\",\n      \"title\": \"ut culpa dolore\",\n      \"description\": \"veniam ex amet\"\n    },\n    {\n      \"language\": \"MALAYALAM\",\n      \"title\": \"Excepteur labore magna\",\n      \"description\": \"elit eiusmod\"\n    }\n  ],\n  \"mediaFiles\": [\n    \"laboris et commodo dolor id\",\n    \"anim magna\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "add"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-1d602d14-4031-4d6d-9569-784be0ab18f2"
+        },
+        {
+          "id": "5594fe9e-9605-471b-a9cf-d01f24bba560",
+          "name": "`merchantId` not found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_type\": {\n    \"tag\": \"Action\",\n    \"contents\": \"aliquip laborum\"\n  },\n  \"title\": \"consectetur quis cupidatat culpa enim\",\n  \"description\": \"incididunt dolore minim\",\n  \"translations\": [\n    {\n      \"language\": \"TAMIL\",\n      \"title\": \"ut culpa dolore\",\n      \"description\": \"veniam ex amet\"\n    },\n    {\n      \"language\": \"MALAYALAM\",\n      \"title\": \"Excepteur labore magna\",\n      \"description\": \"elit eiusmod\"\n    }\n  ],\n  \"mediaFiles\": [\n    \"laboris et commodo dolor id\",\n    \"anim magna\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/add",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "add"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-5594fe9e-9605-471b-a9cf-d01f24bba560"
+        }
+      ],
+      "uid": "38579165-ba94010e-d6f8-4e86-a65d-db4fa09d94df"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/send Copy",
+      "id": "17e44f5e-9aba-4a8b-be87-91f71427b2eb",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "type",
+              "value": "Include",
+              "type": "text"
+            },
+            {
+              "key": "csvFile",
+              "type": "file",
+              "value": null
+            },
+            {
+              "key": "messageId",
+              "value": "{{msgId}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/send",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            "send"
+          ],
+          "variable": [
+            {
+              "id": "e5d82ff2-db86-42c9-aa50-a06304368d47",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "ae169fe6-f49a-4eea-872d-e18ba784c340",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/send",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "send"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "\"Success\"",
+          "uid": "38579165-ae169fe6-f49a-4eea-872d-e18ba784c340"
+        },
+        {
+          "id": "dbe75ee0-9f2b-4ff8-87f7-e19baccf7ce7",
+          "name": "Invalid `token`",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/send",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "send"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-dbe75ee0-9f2b-4ff8-87f7-e19baccf7ce7"
+        },
+        {
+          "id": "4f891f74-5f3f-4d3b-b3c0-070cb4b9b0de",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/send",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "send"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-4f891f74-5f3f-4d3b-b3c0-070cb4b9b0de"
+        },
+        {
+          "id": "f310d4e3-3746-4d7a-ae84-4bcacac2815f",
+          "name": "`merchantId` not found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/send",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "send"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-f310d4e3-3746-4d7a-ae84-4bcacac2815f"
+        }
+      ],
+      "uid": "38579165-17e44f5e-9aba-4a8b-be87-91f71427b2eb"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/message/:messageId/info",
+      "id": "66ec7a2e-3e8c-4553-9b6b-2fe64215ac04",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/:messageId/info",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            ":messageId",
+            "info"
+          ],
+          "variable": [
+            {
+              "id": "1830f721-e214-481b-8599-7207f163f688",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER",
+              "description": "(Required) "
+            },
+            {
+              "id": "0b27e0c1-7c82-4ac9-80f2-b84337cc6698",
+              "key": "messageId",
+              "value": "{{msgId}}",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "0cfeb5dc-92df-46ff-95b1-0ec226ec8cab",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "info"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"messageId\": \"nostrud dolor Duis ex\",\n  \"title\": \"nisi in\",\n  \"description\": \"Ut Excepteur\",\n  \"_type\": {\n    \"tag\": \"Action\",\n    \"contents\": \"aliquip magna\"\n  },\n  \"mediaFiles\": [\n    {\n      \"_type\": \"AudioLink\",\n      \"link\": \"dolor quis ipsum ex ea\"\n    },\n    {\n      \"_type\": \"Image\",\n      \"link\": \"non cillum in\"\n    }\n  ]\n}",
+          "uid": "38579165-0cfeb5dc-92df-46ff-95b1-0ec226ec8cab"
+        },
+        {
+          "id": "7b492bdc-a56b-4b29-bbe3-78ca4921f483",
+          "name": "Invalid `token`",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "info"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-7b492bdc-a56b-4b29-bbe3-78ca4921f483"
+        },
+        {
+          "id": "6916d8dc-516b-4e64-9037-149326e6a3cd",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "info"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-6916d8dc-516b-4e64-9037-149326e6a3cd"
+        },
+        {
+          "id": "9c312754-5e8a-4b68-93f1-0ec8a7492665",
+          "name": "`merchantId` or `messageId` not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "info"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-9c312754-5e8a-4b68-93f1-0ec8a7492665"
+        }
+      ],
+      "uid": "38579165-66ec7a2e-3e8c-4553-9b6b-2fe64215ac04"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/list Copy 2",
+      "id": "e2d7e82e-4428-44fb-968f-220cf882e495",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/list?limit=10&offset=5",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "offset",
+              "value": "5"
+            }
+          ],
+          "variable": [
+            {
+              "id": "378312f0-c0ef-48fb-88d3-ee2daf7c79db",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "36904e9e-074f-42f1-9547-3ea532020b03",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/list?limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"messages\": [\n    {\n      \"messageId\": \"esse dolor amet aliqua\",\n      \"title\": \"anim sint\",\n      \"_type\": {\n        \"tag\": \"Action\",\n        \"contents\": \"anim ut aliqua\"\n      }\n    },\n    {\n      \"messageId\": \"velit esse nulla minim elit\",\n      \"title\": \"in ad\",\n      \"_type\": {\n        \"tag\": \"Action\",\n        \"contents\": \"magna velit\"\n      }\n    }\n  ],\n  \"summary\": {\n    \"totalCount\": 9041753599397913000,\n    \"count\": 8694937571563414000\n  }\n}",
+          "uid": "38579165-36904e9e-074f-42f1-9547-3ea532020b03"
+        },
+        {
+          "id": "73f499e4-9013-4692-956b-e5fa6d861541",
+          "name": "Invalid `offset` or `limit` or `token`",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/list?limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-73f499e4-9013-4692-956b-e5fa6d861541"
+        },
+        {
+          "id": "08e5529e-895a-42b5-876a-c1b593c9eb3c",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/list?limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-08e5529e-895a-42b5-876a-c1b593c9eb3c"
+        },
+        {
+          "id": "2e1c928b-7104-4785-9fc7-8c07844e9995",
+          "name": "`merchantId` not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/list?limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-2e1c928b-7104-4785-9fc7-8c07844e9995"
+        }
+      ],
+      "uid": "38579165-e2d7e82e-4428-44fb-968f-220cf882e495"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/message/:messageId/deliveryInfo Copy",
+      "id": "8c815338-98eb-4887-9b40-9bf9a6e85cf5",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/:messageId/deliveryInfo",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            ":messageId",
+            "deliveryInfo"
+          ],
+          "variable": [
+            {
+              "id": "e33867c1-1042-472c-82a5-68750e68860c",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER",
+              "description": "(Required) "
+            },
+            {
+              "id": "ae1ee973-7e66-4118-afb5-23d76ab94cba",
+              "key": "messageId",
+              "value": "{{msgId}}",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "6b03de85-c2a9-4da5-8251-c1c37acdff07",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/deliveryInfo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "deliveryInfo"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"messageId\": \"aliquip mollit nostrud ut\",\n  \"success\": 2754147154375282700,\n  \"failed\": 5014914830548922000,\n  \"pending\": 7311859176120259000\n}",
+          "uid": "38579165-6b03de85-c2a9-4da5-8251-c1c37acdff07"
+        },
+        {
+          "id": "26a0e004-8e4b-4cc0-a34e-3fdc0b773ea6",
+          "name": "Invalid `token`",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/deliveryInfo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "deliveryInfo"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-26a0e004-8e4b-4cc0-a34e-3fdc0b773ea6"
+        },
+        {
+          "id": "21313b7d-c9fd-4e02-a093-cb60df67a9ce",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/deliveryInfo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "deliveryInfo"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-21313b7d-c9fd-4e02-a093-cb60df67a9ce"
+        },
+        {
+          "id": "0706d3d8-70a2-4753-9a78-1c270144ac77",
+          "name": "`merchantId` or `messageId` not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/deliveryInfo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "deliveryInfo"
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-0706d3d8-70a2-4753-9a78-1c270144ac77"
+        }
+      ],
+      "uid": "38579165-8c815338-98eb-4887-9b40-9bf9a6e85cf5"
+    },
+    {
+      "name": "/bpp/driver-offer/:merchantId/message/message/:messageId/receiverList Copy",
+      "id": "ec130adf-edb4-482b-82b8-9747e8e5dc0e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dashboard_token_auto}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/message/message/:messageId/receiverList?number=2&status=\"Success\"&limit=5&offset=10",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "message",
+            "message",
+            ":messageId",
+            "receiverList"
+          ],
+          "query": [
+            {
+              "key": "number",
+              "value": "2"
+            },
+            {
+              "key": "status",
+              "value": "\"Success\""
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            },
+            {
+              "key": "offset",
+              "value": "10"
+            }
+          ],
+          "variable": [
+            {
+              "id": "b7172efb-b9ed-4f5b-844c-34f788a73a65",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER",
+              "description": "(Required) "
+            },
+            {
+              "id": "cf181227-5264-4a90-8d6d-3cc6eafc1c5f",
+              "key": "messageId",
+              "value": "7fa2c734-e7ee-4180-ac49-daf4dfabf8f3",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "0c16b41a-424c-4f59-9169-13bddb2da18a",
+          "name": "Untitled Example",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/receiverList?number=in&status=Success&limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "receiverList"
+              ],
+              "query": [
+                {
+                  "key": "number",
+                  "value": "in"
+                },
+                {
+                  "key": "status",
+                  "value": "Success"
+                },
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"receivers\": [\n    {\n      \"receiverId\": \"proident qui\",\n      \"receiverName\": \"Lorem reprehender\",\n      \"receiverNumber\": \"dolore\",\n      \"status\": \"Pending\",\n      \"reply\": \"consectetur\",\n      \"seen\": true\n    },\n    {\n      \"receiverId\": \"voluptate Ut velit\",\n      \"receiverName\": \"laborum officia fugiat nisi ipsum\",\n      \"receiverNumber\": \"dolore deserunt aute adipisicing\",\n      \"status\": \"Failed\",\n      \"reply\": \"sit aliquip labore non id\",\n      \"seen\": true\n    }\n  ],\n  \"summary\": {\n    \"totalCount\": -9113462565295133000,\n    \"count\": 9000822956563108000\n  }\n}",
+          "uid": "38579165-0c16b41a-424c-4f59-9169-13bddb2da18a"
+        },
+        {
+          "id": "26371a11-52b3-4bfc-ae0f-96dd42cef2bd",
+          "name": "Invalid `offset` or `limit` or `status` or `number` or `token`",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/receiverList?number=in&status=Success&limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "receiverList"
+              ],
+              "query": [
+                {
+                  "key": "number",
+                  "value": "in"
+                },
+                {
+                  "key": "status",
+                  "value": "Success"
+                },
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-26371a11-52b3-4bfc-ae0f-96dd42cef2bd"
+        },
+        {
+          "id": "0d340813-1dd7-4fc8-9db4-5cd6cd4bea68",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/receiverList?number=in&status=Success&limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "receiverList"
+              ],
+              "query": [
+                {
+                  "key": "number",
+                  "value": "in"
+                },
+                {
+                  "key": "status",
+                  "value": "Success"
+                },
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-0d340813-1dd7-4fc8-9db4-5cd6cd4bea68"
+        },
+        {
+          "id": "66cc8071-6376-40c5-91de-4dc4ede55d6a",
+          "name": "`merchantId` or `messageId` not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "<API Key>",
+                "description": "Added as a part of security scheme: apikey"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/message/message/:messageId/receiverList?number=in&status=Success&limit=-7698088958772318000&offset=-7698088958772318000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "message",
+                "message",
+                ":messageId",
+                "receiverList"
+              ],
+              "query": [
+                {
+                  "key": "number",
+                  "value": "in"
+                },
+                {
+                  "key": "status",
+                  "value": "Success"
+                },
+                {
+                  "key": "limit",
+                  "value": "-7698088958772318000"
+                },
+                {
+                  "key": "offset",
+                  "value": "-7698088958772318000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "merchantId",
+                  "value": "in",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "messageId",
+                  "value": "in",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "",
+          "uid": "38579165-66cc8071-6376-40c5-91de-4dc4ede55d6a"
+        }
+      ],
+      "uid": "38579165-ec130adf-edb4-482b-82b8-9747e8e5dc0e"
+    },
+    {
+      "name": "New Request",
+      "id": "56348cb9-66bd-4ce1-be4b-b4398221df6a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/volunteer/:bookingOtp/booking",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "volunteer",
+            ":bookingOtp",
+            "booking"
+          ],
+          "variable": [
+            {
+              "id": "e979265f-1acd-4e48-b39b-6f0e5820a947",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "60f442df-2867-4633-81cf-61c82f043051",
+              "key": "bookingOtp",
+              "value": "4294"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-56348cb9-66bd-4ce1-be4b-b4398221df6a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "dashboard_token_auto",
+      "value": "7bcec540-5d6f-4b9b-9468-ca6c3ca877e3"
+    },
+    {
+      "key": "message_fileId",
+      "value": ""
+    },
+    {
+      "key": "msgId",
+      "value": ""
+    }
+  ]
+}

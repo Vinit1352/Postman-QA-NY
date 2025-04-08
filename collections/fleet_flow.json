@@ -1,0 +1,1020 @@
+{
+  "info": {
+    "_postman_id": "6f9315d3-e48b-4ad0-bbe6-74a73b21e13c",
+    "name": "fleet_flow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2024-12-24T07:38:24.000Z",
+    "createdAt": "2024-12-24T07:38:23.000Z",
+    "lastUpdatedBy": "38579165",
+    "uid": "38579165-6f9315d3-e48b-4ad0-bbe6-74a73b21e13c"
+  },
+  "item": [
+    {
+      "name": "fleet_owner_register",
+      "id": "ed78164e-5e14-4414-8b20-45cf4722c891",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"merchantId\": \"NAMMA_YATRI_PARTNER\",\n  \"mobileCountryCode\": \"+91\",\n  \"firstName\": \"Shreyash\",\n  \"lastName\": \"Pankaj\",\n  \"mobileNumber\": \"9878418335\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/fleet/register",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "user",
+            "fleet",
+            "register"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-ed78164e-5e14-4414-8b20-45cf4722c891"
+    },
+    {
+      "name": "fleet_owner_login",
+      "id": "c6b873d0-1a88-4462-a2a0-e42107a7b5a3",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"merchantId\": \"NAMMA_YATRI_PARTNER\",\n  \"mobileCountryCode\": \"+91\",\n  \"otp\": \"\",\n  \"mobileNumber\": \"9878418335\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/fleet/login/otp",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "fleet",
+            "login",
+            "otp"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-c6b873d0-1a88-4462-a2a0-e42107a7b5a3"
+    },
+    {
+      "name": "fleet_owner_verify",
+      "id": "f398b208-88ff-4297-8633-d64d5048dcad",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"merchantId\": \"JATRI_SAATHI_PARTNER\",\n  \"mobileCountryCode\": \"+91\",\n  \"otp\": \"7891\",\n  \"mobileNumber\": \"6123451234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/fleet/verify/otp",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "fleet",
+            "verify",
+            "otp"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-f398b208-88ff-4297-8633-d64d5048dcad"
+    },
+    {
+      "name": "fleet_driver_onboard_otp",
+      "id": "470fb11d-4576-4a06-b012-15fb7ae8f883",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "fd950ee4-1cd0-4c72-9c17-6c97477d8b75",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mobileCountryCode\": \"+91\",\n  \"mobileNumber\": \"7007231604\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/auth",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "auth"
+          ],
+          "variable": [
+            {
+              "id": "1c75efb5-db9b-4876-a2cb-5487470f8d33",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-470fb11d-4576-4a06-b012-15fb7ae8f883"
+    },
+    {
+      "name": "fleet_driver_onboard_verify",
+      "id": "865bab4b-f54b-43c1-ae8d-bf693bfcda6b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "fd950ee4-1cd0-4c72-9c17-6c97477d8b75",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"deviceToken\": \"string\",\n  \"otp\": \"7891\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:authId/verify",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            ":authId",
+            "verify"
+          ],
+          "variable": [
+            {
+              "id": "a02390d9-f812-45b3-90f5-ddd34481c821",
+              "key": "merchantId",
+              "value": "NAMMA_YATRI_PARTNER"
+            },
+            {
+              "id": "b5759ebe-e138-42e1-883f-0a80a254d87c",
+              "key": "authId",
+              "value": "0b80126c-95e9-4601-a0f2-e0bd150c4f98"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-865bab4b-f54b-43c1-ae8d-bf693bfcda6b"
+    },
+    {
+      "name": "/fleet/addVehicle",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set(\"registrationNo\",\"WB04E6854\")",
+              "pm.variables.set(\"registrationNo\",pm.collectionVariables.get(\"registrationNo\"))",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "10c5b8ba-43e9-4b17-abe7-f1fc2b52341d"
+          }
+        }
+      ],
+      "id": "fd0fb0a5-2198-4ac5-ab06-c4890b142687",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "token",
+            "value": "de91b1da-f15e-469c-8704-4c527631f7f0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"colour\": \"Black\",\n  \"driverName\": \"D2\",\n  \"model\": \"2025\",\n  \"variant\": \"SUV\",\n  \"vehicleClass\": \"V2\",\n  \"energyType\": \"string\",\n  \"make\": \"string\",\n  \"registrationNo\": \"{{registrationNo}}\",\n  \"capacity\": 6\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:mobileNo/fleet/addVehicle",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            ":mobileNo",
+            "fleet",
+            "addVehicle"
+          ],
+          "variable": [
+            {
+              "id": "4c502262-831c-47f6-8307-9e6127399f21",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            },
+            {
+              "id": "ffd4ca96-2300-4331-9f8d-c7e15b12e213",
+              "key": "mobileNo",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-fd0fb0a5-2198-4ac5-ab06-c4890b142687"
+    },
+    {
+      "name": "fleet/getAllVehicle",
+      "id": "9f0a8f28-f6e1-4c32-b0d9-6174c66373d4",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "de91b1da-f15e-469c-8704-4c527631f7f0"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/driver/fleet/getAllVehicle",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "driver",
+            "fleet",
+            "getAllVehicle"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-9f0a8f28-f6e1-4c32-b0d9-6174c66373d4"
+    },
+    {
+      "name": "fleet_get_all_drivers_for_fleet",
+      "id": "722791a2-b847-4782-b84e-7725441ee465",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "0d254b3e-3bde-4a5b-8888-d666bad4e700",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/getAllDriver",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "getAllDriver"
+          ],
+          "variable": [
+            {
+              "id": "9fadd956-24d4-4d4b-93bd-d06f5c8f5970",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-722791a2-b847-4782-b84e-7725441ee465"
+    },
+    {
+      "name": "fleet_unlink_vehicle",
+      "id": "6ed819d7-e86e-4e92-b1b5-2e959b5e972a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:vehicleNo/:driverId/fleet/unlink",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            ":vehicleNo",
+            ":driverId",
+            "fleet",
+            "unlink"
+          ],
+          "variable": [
+            {
+              "id": "2730a8fa-34eb-4e24-8384-758824da23b7",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            },
+            {
+              "id": "aa83df67-f6d5-498c-b2a8-be87f334493b",
+              "key": "vehicleNo",
+              "value": "{{registrationNo}}"
+            },
+            {
+              "id": "a9fde44f-2097-4972-acfc-76441d6697e8",
+              "key": "driverId",
+              "value": "d261c30f-7359-4ab4-81fa-d2cf0c0f9bb7"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-6ed819d7-e86e-4e92-b1b5-2e959b5e972a"
+    },
+    {
+      "name": "fleet/remove/vehicle",
+      "id": "b4c1513a-4f3e-456a-959a-9fa49e7e9e7f",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/driver/:vehicleNo/fleet/remove/vehicle",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "driver",
+            ":vehicleNo",
+            "fleet",
+            "remove",
+            "vehicle"
+          ],
+          "variable": [
+            {
+              "id": "ebe7e8ad-9d31-411f-84d4-ecd0285f3651",
+              "key": "vehicleNo",
+              "value": "WB04G4640"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-b4c1513a-4f3e-456a-959a-9fa49e7e9e7f"
+    },
+    {
+      "name": "/fleet/remove/driver",
+      "id": "b6443b3a-f308-44ee-88c1-0a831885d617",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/driver/wrwer/fleet/remove/driver",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "driver",
+            "wrwer",
+            "fleet",
+            "remove",
+            "driver"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-b6443b3a-f308-44ee-88c1-0a831885d617"
+    },
+    {
+      "name": "fleet/vehicleDriverRCstatus",
+      "id": "657313bf-b942-4675-beca-992180a53d37",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isActivate\": true,\n  \"rcNo\": \"WB090135\"\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/driver/ed289787-2222-47ac-be2c-c3c1c0f42b48/fleet/vehicleDriverRCstatus",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "driver",
+            "ed289787-2222-47ac-be2c-c3c1c0f42b48",
+            "fleet",
+            "vehicleDriverRCstatus"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-657313bf-b942-4675-beca-992180a53d37"
+    },
+    {
+      "name": "fleet_driver_vehicle_association_earning",
+      "id": "6fc1b0a7-b035-454f-a9a8-0272b4d51da2",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/driverVehicleAssociation",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "driverVehicleAssociation"
+          ],
+          "variable": [
+            {
+              "id": "5e5cf3e1-0077-429c-bfeb-a5b2703b91a6",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-6fc1b0a7-b035-454f-a9a8-0272b4d51da2"
+    },
+    {
+      "name": "fleet_vehicle_total_earning",
+      "id": "6e347446-61c8-4739-be32-9e883b8f8fcf",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/vehicleAssociation",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "vehicleAssociation"
+          ],
+          "variable": [
+            {
+              "id": "6a706996-3ff2-42b5-8976-f7ebb6db3f93",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-6e347446-61c8-4739-be32-9e883b8f8fcf"
+    },
+    {
+      "name": "fleet_driver_total_earning",
+      "id": "6eaf1b3f-92da-4689-bb71-022225014ebc",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/driverAssociation",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "driverAssociation"
+          ],
+          "variable": [
+            {
+              "id": "cae93859-88b2-423e-b53f-e2447ef7c44c",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-6eaf1b3f-92da-4689-bb71-022225014ebc"
+    },
+    {
+      "name": "fleet_total_earning",
+      "id": "bad1e612-6cc9-49fa-b07b-471f01cb9e9a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/totalEarning",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "totalEarning"
+          ],
+          "variable": [
+            {
+              "id": "006e8176-ad97-4286-aeff-4b5bdbfc676d",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-bad1e612-6cc9-49fa-b07b-471f01cb9e9a"
+    },
+    {
+      "name": "fleet_individual_vehicle_earning",
+      "id": "f38fd725-928b-4e20-af0d-c7bbfa2df483",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/vehicleEarning/:vehicleNo",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "vehicleEarning",
+            ":vehicleNo"
+          ],
+          "variable": [
+            {
+              "id": "7a5db1ea-0dac-4fbc-a365-2a8ab5d17024",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            },
+            {
+              "id": "c839854c-3039-4efe-8081-3dd70d144fb1",
+              "key": "vehicleNo",
+              "value": "svx"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-f38fd725-928b-4e20-af0d-c7bbfa2df483"
+    },
+    {
+      "name": "fleet_individual_driver_vehicle_earning",
+      "id": "5cbb360e-6bfb-47d7-8687-942a78a3551b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{fleettoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/fleet/vehicleEarning/:vehicleNo/?driverId=8c17f4fb-2690-4ddd-aa49-57220bd66005",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            ":merchantId",
+            "driver",
+            "fleet",
+            "vehicleEarning",
+            ":vehicleNo",
+            ""
+          ],
+          "query": [
+            {
+              "key": "driverId",
+              "value": "8c17f4fb-2690-4ddd-aa49-57220bd66005"
+            }
+          ],
+          "variable": [
+            {
+              "id": "5ae7e4c3-dfd3-4d3a-be0f-73159b147b4a",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI_PARTNER"
+            },
+            {
+              "id": "f874a19e-867b-4a8c-943b-bfa1fcda5d51",
+              "key": "vehicleNo",
+              "value": "{{registrationNo}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-5cbb360e-6bfb-47d7-8687-942a78a3551b"
+    }
+  ],
+  "variable": [
+    {
+      "key": "registrationNo",
+      "value": ""
+    },
+    {
+      "key": "mobileNumber",
+      "value": ""
+    }
+  ]
+}

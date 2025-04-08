@@ -1,0 +1,2039 @@
+{
+  "info": {
+    "_postman_id": "03f45796-5f48-4225-a3d4-b964ffc9999b",
+    "name": "BPP Dashboard NY Driver Onboarding runner Flow 2 (By Adding Vehicle)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2025-03-03T10:15:08.000Z",
+    "createdAt": "2024-12-24T07:36:01.000Z",
+    "lastUpdatedBy": "38579944",
+    "uid": "38579165-03f45796-5f48-4225-a3d4-b964ffc9999b"
+  },
+  "item": [
+    {
+      "name": "BPP user login",
+      "item": [
+        {
+          "name": "/user/login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = JSON.parse(responseBody)",
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)    ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.collectionVariables.set(\"BPP_dashboardtoken\",json.authToken)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "405e3724-7515-4c63-a2ff-41cc2e664ae4"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.variables.set(\"BPP_user_mail\",\"sumedh.kp.ext@juspay.in\")",
+                  "pm.variables.set(\"BPP_user_password\",\"9952771630\")",
+                  "pm.variables.set(\"merchantId\",\"NAMMA_YATRI_PARTNER\")",
+                  "pm.variables.set(\"operatingCity\",\"Bangalore\")"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "34757560-ea0d-4596-82fb-07e7b8563ac6"
+              }
+            }
+          ],
+          "id": "b5eb59bb-1178-450f-8dac-a21f1dee4b70",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{BPP_user_mail}}\",\n  \"password\": \"{{BPP_user_password}}\",\n  \"merchantId\": \"{{merchant_id}}\",\n  \"operatingCity\": \"{{operatingCity}}\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/login",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-b5eb59bb-1178-450f-8dac-a21f1dee4b70"
+        },
+        {
+          "name": "/user/switchMerchantAndCity",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "072f4a74-5866-4d71-8ffc-8bca93779d04",
+                "exec": [
+                  "const json = JSON.parse(responseBody)",
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.collectionVariables.set(\"BPP_dashboardtoken\",json.authToken)"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "415a4b36-6038-4135-93ce-39b3428a8538",
+                "exec": [
+                  "pm.collectionVariables.set(\"merchantOperatingCity\",\"Bangalore\")"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "9ae6f28e-7a9e-4193-8d74-78d50d65c7e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"{{merchantOperatingCity}}\",\n  \"merchantId\": \"NAMMA_YATRI_PARTNER\",\n  \"otp\": \"7891\"\n}"
+            },
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/switchMerchantAndCity",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "user",
+                "switchMerchantAndCity"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-9ae6f28e-7a9e-4193-8d74-78d50d65c7e5"
+        }
+      ],
+      "id": "e933496b-9c40-4636-ad42-92f74a25d8fa",
+      "uid": "38579165-e933496b-9c40-4636-ad42-92f74a25d8fa"
+    },
+    {
+      "name": "Driver Login",
+      "item": [
+        {
+          "name": "/auth",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)",
+                  "",
+                  " pm.collectionVariables.set(\"onboarding_driver_number\",9165592722)",
+                  "pm.variables.set(\"new_driver_number\",pm.collectionVariables.get(\"onboarding_driver_number\"))",
+                  "pm.collectionVariables.set(\"merchantId\",\"7f7896dd-787e-4a0b-8675-e9e6fe93bb8f\")",
+                  "pm.collectionVariables.set(\"merchantOperatingCity\",\"Bangalore\")",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "id": "7c2e7444-60d7-458b-9bb9-1bf21a6ac2f7"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const obj = JSON.parse(responseBody)",
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.collectionVariables.set(\"authId\",obj.authId)"
+                ],
+                "type": "text/javascript",
+                "id": "34b0a7d9-ce16-4744-b212-139b36f2af46"
+              }
+            }
+          ],
+          "id": "c0f2d74f-061b-41f8-8fd2-2b6f1a22822c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"mobileNumber\": \"{{new_driver_number}}\",\n    \"mobileCountryCode\": \"+91\",\n    \"merchantId\": \"7f7896dd-787e-4a0b-8675-e9e6fe93bb8f\",\n    \"merchantOperatingCity\": \"{{merchantOperatingCity}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/auth",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-c0f2d74f-061b-41f8-8fd2-2b6f1a22822c"
+        },
+        {
+          "name": "/auth/:authId/verify",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "a0aeb4c9-cc75-4dd9-b016-deb653051857"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var obj= JSON.parse(responseBody)",
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.collectionVariables.set(\"new_driver_id\",obj.person.id)",
+                  "pm.collectionVariables.set(\"new_driver_token\",obj.token)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "9d33218e-d94c-4d87-9cee-f78964993e08"
+              }
+            }
+          ],
+          "id": "f660b73f-754e-406f-a489-79b2ba2ab992",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"otp\": \"7891\",\n    \"deviceToken\": \"8e83b5dc-99a0-4306-b90d-2345f3050972\"\n}"
+            },
+            "url": {
+              "raw": "{{baseURL_namma_P}}/auth/:authId/verify",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "auth",
+                ":authId",
+                "verify"
+              ],
+              "variable": [
+                {
+                  "id": "778f980e-8c6c-4e4d-9c4f-2b2430816213",
+                  "key": "authId",
+                  "value": "{{authId}}"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-f660b73f-754e-406f-a489-79b2ba2ab992"
+        }
+      ],
+      "id": "145e8923-7079-4b9a-8855-4bc112f7e628",
+      "uid": "38579165-145e8923-7079-4b9a-8855-4bc112f7e628"
+    },
+    {
+      "name": "Add vehicle and upload documents",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/addVehicle",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "b2be5bd8-9abd-4884-aa12-fa7d2d3cd837",
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "2b1564c0-c5a1-4ad1-94a9-b29698816a42",
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "id": "a60cc8d3-9525-4785-8c0f-2c1635ed7f4a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "token",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"variant\": \"AUTO_RICKSHAW\",\n  \"registrationNo\": \"KA09I1011\",\n  \"vehicleClass\": \"Three wheeler\",\n  \"colour\": \"ECO Green\",\n  \"model\": \"RE 4 stroke 205 LPG\",\n  \"driverName\": \"Testing new driver\",\n  \"energyType\": \"Fuel/LPG\",\n  \"make\": \"test\",\n  \"capacity\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchant_id/:city/driver/:driverId/addVehicle",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchant_id",
+                ":city",
+                "driver",
+                ":driverId",
+                "addVehicle"
+              ],
+              "variable": [
+                {
+                  "key": "merchant_id",
+                  "value": "NAMMA_YATRI_PARTNER"
+                },
+                {
+                  "key": "city",
+                  "value": "Bangalore"
+                },
+                {
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-a60cc8d3-9525-4785-8c0f-2c1635ed7f4a"
+        }
+      ],
+      "id": "fefb7ebb-0a6b-4217-bb34-99124939d589",
+      "uid": "38579165-fefb7ebb-0a6b-4217-bb34-99124939d589"
+    },
+    {
+      "name": "Driver Enable",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/enable",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "c15adcd8-cbf1-4550-8e87-8a92111c86aa"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Verified whether driver is enabled\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Success\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "62c88929-daa1-4572-939a-94ca3edd0d51"
+              }
+            }
+          ],
+          "id": "3b5a798f-5793-4740-bc10-5231813bedfb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "token",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/:city/driver/:driverId/enable",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                ":city",
+                "driver",
+                ":driverId",
+                "enable"
+              ],
+              "variable": [
+                {
+                  "id": "b976bcb6-98e7-414f-8912-35f33a181375",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "bc9ff5de-4d9b-4f74-9e51-ba72e5fc7b58",
+                  "key": "city",
+                  "value": "Bangalore"
+                },
+                {
+                  "id": "410f6817-d22b-4ab3-861c-e8b0bcea9c9d",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-3b5a798f-5793-4740-bc10-5231813bedfb"
+        }
+      ],
+      "id": "4e0a1d33-197d-4e3e-a99c-a304e63e9777",
+      "uid": "38579165-4e0a1d33-197d-4e3e-a99c-a304e63e9777"
+    },
+    {
+      "name": "Driver Registration Status",
+      "item": [
+        {
+          "name": "/driver/register/status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "67ce1ddc-20fa-4d0c-bed1-a2baf5d7f8c0"
+              }
+            }
+          ],
+          "id": "fcb1df8c-98d9-40ba-b1e2-f90b747d365f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{new_driver_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "f28911ba-4888-4ade-82e9-acc578e87f77"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/register/status",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "register",
+                "status"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-fcb1df8c-98d9-40ba-b1e2-f90b747d365f"
+        }
+      ],
+      "id": "62aa61e9-4ace-4405-bbf6-d801a8b18ce6",
+      "uid": "38579165-62aa61e9-4ace-4405-bbf6-d801a8b18ce6"
+    },
+    {
+      "name": "Driver info",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/info",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)",
+                  "pm.variables.set(\"new_driver_number\",pm.collectionVariables.get(\"onboarding_driver_number\"))"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "cce3f6a8-3575-47e0-a59b-2558d1cc38a1"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "fcb5c7ea-98f8-4250-b1e2-093dfe7dce0b"
+              }
+            }
+          ],
+          "id": "e74e4f56-85be-4ed3-9d51-61bf92c2e043",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/:city/driver/info?mobileNumber={{onboarding_driver_number}}",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                ":city",
+                "driver",
+                "info"
+              ],
+              "query": [
+                {
+                  "key": "mobileNumber",
+                  "value": "{{onboarding_driver_number}}"
+                },
+                {
+                  "key": "mobileCountryCode",
+                  "value": "+91",
+                  "disabled": true
+                },
+                {
+                  "key": "vehicleNumber",
+                  "value": "<string>",
+                  "disabled": true
+                },
+                {
+                  "key": "dlNumber",
+                  "value": "KA0220090022478",
+                  "disabled": true
+                },
+                {
+                  "key": "rcNumber",
+                  "value": "<string>",
+                  "disabled": true
+                },
+                {
+                  "key": "mobileNumber",
+                  "value": "8888888804",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "id": "4515f28b-3913-4ed1-a510-7e794064dd64",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "bd927810-f8f0-4aee-a282-24a6d122cd76",
+                  "key": "city",
+                  "value": "BANGALORE"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-e74e4f56-85be-4ed3-9d51-61bf92c2e043"
+        }
+      ],
+      "id": "6141371a-8dd8-479a-bb52-87d0496cdab5",
+      "uid": "38579165-6141371a-8dd8-479a-bb52-87d0496cdab5"
+    },
+    {
+      "name": "Driver profile",
+      "item": [
+        {
+          "name": "/driver/profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "let obj = JSON.parse(responseBody)",
+                  "",
+                  "pm.test(\"Verified whether the driver got enabled\",function(){",
+                  "    pm.expect(obj.enabled).to.be.true;",
+                  "})"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "3a2eb28e-41e9-43a8-9158-55c69547f26a"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "20a932a0-0a6e-4c2f-a755-f45d4dcec961"
+              }
+            }
+          ],
+          "id": "81a1e313-c887-4300-b8b5-d29bffb53426",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{new_driver_token}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "token",
+                "value": "0926a773-9362-4c0c-b03a-b47c4ff40da6"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_namma_P}}/driver/profile",
+              "host": [
+                "{{baseURL_namma_P}}"
+              ],
+              "path": [
+                "driver",
+                "profile"
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-81a1e313-c887-4300-b8b5-d29bffb53426"
+        }
+      ],
+      "id": "4bc35e0f-0378-472b-a95f-2f3304716745",
+      "uid": "38579165-4bc35e0f-0378-472b-a95f-2f3304716745"
+    },
+    {
+      "name": "Driver Blocking / Unblocking",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/block",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "421f2dc0-d7bb-491b-a2b7-6451c6781055"
+              }
+            }
+          ],
+          "id": "cafd5239-ea4f-4790-a2ed-859512d0d927",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "token",
+                "value": "48238fd7-d88b-422c-8d85-20bf65d7b113"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/block",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "block"
+              ],
+              "variable": [
+                {
+                  "id": "b310da5b-ed2e-4345-80ec-aa8851e88176",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "1419ff28-6da4-4c59-9d10-47f87f8c781f",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-cafd5239-ea4f-4790-a2ed-859512d0d927"
+        },
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/unblock",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "111614eb-d621-4770-9290-ccf3893f2447"
+              }
+            }
+          ],
+          "id": "b479e15e-e513-4d55-8ee8-cca1ae51113b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "token",
+                "value": "48238fd7-d88b-422c-8d85-20bf65d7b113"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/unblock",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "unblock"
+              ],
+              "variable": [
+                {
+                  "id": "62fbbda9-a00f-4584-ad1f-49ea76180039",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "c7582007-fb5e-45ba-952a-34a4cb8b613d",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-b479e15e-e513-4d55-8ee8-cca1ae51113b"
+        }
+      ],
+      "id": "b4b748d2-4f9b-4388-91e6-b0a0ade891d3",
+      "uid": "38579165-b4b748d2-4f9b-4388-91e6-b0a0ade891d3"
+    },
+    {
+      "name": "EndRCAssociation",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/endRCAssociation",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Verified whether endRCAssociation is success\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Success\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "7ce02fb6-842f-43b0-8ebe-0df99e2372b8"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "50abdcbb-0569-4bf9-9448-0f58271b15ce"
+              }
+            }
+          ],
+          "id": "724fbead-d265-4477-b46a-99fa5750deef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/endRCAssociation",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "endRCAssociation"
+              ],
+              "variable": [
+                {
+                  "id": "7168cf78-7d4b-4946-80ad-8ca7193d5555",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "868317d8-17d0-4cc5-972b-5fa5abe37d90",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "01240f4a-61a5-4213-83ac-6ade9b529551",
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/endRCAssociation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "endRCAssociation"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "Success",
+              "uid": "38579165-01240f4a-61a5-4213-83ac-6ade9b529551"
+            },
+            {
+              "id": "e2052c8d-bc26-4f3a-bb97-0ac51bb23ecb",
+              "name": "Invalid `token`",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/endRCAssociation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "endRCAssociation"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-e2052c8d-bc26-4f3a-bb97-0ac51bb23ecb"
+            },
+            {
+              "id": "17c557a6-6504-4f01-a042-23c819fd77ed",
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/endRCAssociation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "endRCAssociation"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-17c557a6-6504-4f01-a042-23c819fd77ed"
+            },
+            {
+              "id": "39ca7020-701d-4712-aa94-5a15a7a132a6",
+              "name": "`merchantId` or `driverId` not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/endRCAssociation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "endRCAssociation"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-39ca7020-701d-4712-aa94-5a15a7a132a6"
+            }
+          ],
+          "uid": "38579165-724fbead-d265-4477-b46a-99fa5750deef"
+        }
+      ],
+      "id": "656086f1-e256-47ba-81ab-3a04202e434f",
+      "uid": "38579165-656086f1-e256-47ba-81ab-3a04202e434f"
+    },
+    {
+      "name": "UnlinkVehicle",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/unlinkVehicle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Verified whether unlinkVehicle is Success\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Success\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "91ae9440-3051-400f-8df4-ea6b9dea81c5"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "ccad8d80-ce56-4832-9c84-47c60537e383"
+              }
+            }
+          ],
+          "id": "b973dae6-a333-4291-94c1-908ee964a0d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/unlinkVehicle",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "unlinkVehicle"
+              ],
+              "variable": [
+                {
+                  "id": "bc5ec9ff-8f7c-4b5c-bcb7-358e3a11e2d2",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "04efaae4-6138-4cfc-9bef-96600c840bcf",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "63887fa2-6f89-4c8c-a29c-f68ea6818323",
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/unlinkVehicle",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "unlinkVehicle"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "Success",
+              "uid": "38579165-63887fa2-6f89-4c8c-a29c-f68ea6818323"
+            },
+            {
+              "id": "65079c67-0d67-4f2d-bb14-3c2cd5ec54fa",
+              "name": "Invalid `token`",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/unlinkVehicle",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "unlinkVehicle"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-65079c67-0d67-4f2d-bb14-3c2cd5ec54fa"
+            },
+            {
+              "id": "faa67c88-8cc5-4e0a-a63d-f3fc94112b9f",
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/unlinkVehicle",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "unlinkVehicle"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-faa67c88-8cc5-4e0a-a63d-f3fc94112b9f"
+            },
+            {
+              "id": "14cbd355-ec6e-49c9-9126-d7b3ab81d0fd",
+              "name": "`merchantId` or `driverId` not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/unlinkVehicle",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "unlinkVehicle"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-14cbd355-ec6e-49c9-9126-d7b3ab81d0fd"
+            }
+          ],
+          "uid": "38579165-b973dae6-a333-4291-94c1-908ee964a0d3"
+        }
+      ],
+      "id": "733c05b1-df54-4c99-8c5c-3f85cc5ca86b",
+      "uid": "38579165-733c05b1-df54-4c99-8c5c-3f85cc5ca86b"
+    },
+    {
+      "name": "Driver Disable and Deletion",
+      "item": [
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/disable",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Verified whether driver is disabled\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Success\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "28929dd6-dfe9-499a-ab57-286a498136a8"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "setTimeout(function(){},2000)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "fd70dfff-5325-4b9b-84e2-79b44c0705ba"
+              }
+            }
+          ],
+          "id": "c51d48f3-f068-4b6b-aebb-be48896a3b04",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/disable",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "disable"
+              ],
+              "variable": [
+                {
+                  "id": "699b8e86-aa7c-4c1d-8293-4a0af566f3e0",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "f336530e-ab11-4ed4-a466-c7fd6d87933a",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6baf41cf-bc8c-4328-a14c-a3bce6e4225c",
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/disable",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "disable"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "Success",
+              "uid": "38579165-6baf41cf-bc8c-4328-a14c-a3bce6e4225c"
+            },
+            {
+              "id": "b153df1f-7610-4001-9e53-e0e0af6abd02",
+              "name": "Invalid `token`",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/disable",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "disable"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-b153df1f-7610-4001-9e53-e0e0af6abd02"
+            },
+            {
+              "id": "ed421db8-19e4-4c2a-a040-a1c0b63abc66",
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/disable",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "disable"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-ed421db8-19e4-4c2a-a040-a1c0b63abc66"
+            },
+            {
+              "id": "871206ca-9434-4f0f-b609-ab2f07c0a99e",
+              "name": "`merchantId` or `driverId` not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bpp/driver-offer/:merchantId/driver/:driverId/disable",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bpp",
+                    "driver-offer",
+                    ":merchantId",
+                    "driver",
+                    ":driverId",
+                    "disable"
+                  ],
+                  "variable": [
+                    {
+                      "key": "merchantId"
+                    },
+                    {
+                      "key": "driverId"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "uid": "38579165-871206ca-9434-4f0f-b609-ab2f07c0a99e"
+            }
+          ],
+          "uid": "38579165-c51d48f3-f068-4b6b-aebb-be48896a3b04"
+        },
+        {
+          "name": "/bpp/driver-offer/:merchantId/driver/:driverId/permanentlyDelete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verified whether Status code is 200\", function () {",
+                  "    console.log('req', request)",
+                  "    console.log('res', responseBody)  ",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Verified whether driver is deleted\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Success\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "id": "0a4f449f-897c-4b59-b3e1-dc5e7173ff0a"
+              }
+            }
+          ],
+          "id": "7099c4f9-47a7-4f93-b9d2-539aa708d5dd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{BPP_dashboardtoken}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "token",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "token",
+                "value": "dcc46a06-ba9b-4db0-bbd6-188ae0af1171"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/:merchantId/driver/:driverId/permanentlyDelete",
+              "host": [
+                "{{baseURL_BPP_Dashboard}}"
+              ],
+              "path": [
+                "bpp",
+                "driver-offer",
+                ":merchantId",
+                "driver",
+                ":driverId",
+                "permanentlyDelete"
+              ],
+              "variable": [
+                {
+                  "id": "7e23de5f-bdbf-469d-aabc-607521244599",
+                  "key": "merchantId",
+                  "value": "{{merchant_id}}"
+                },
+                {
+                  "id": "ee813cb2-2100-496a-bd38-bd9e645def49",
+                  "key": "driverId",
+                  "value": "{{new_driver_id}}"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "uid": "38579165-7099c4f9-47a7-4f93-b9d2-539aa708d5dd"
+        }
+      ],
+      "id": "d1babe4f-6459-44dd-9f19-22c3f869261b",
+      "uid": "38579165-d1babe4f-6459-44dd-9f19-22c3f869261b"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ],
+        "id": "e46cf4a5-0a57-4b39-b7fb-f552be3ddd36"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ],
+        "id": "d17f4f54-73d2-49d0-aef1-7960d543912e"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BPP_dashboardtoken",
+      "value": ""
+    },
+    {
+      "key": "onboarding_driver_number",
+      "value": ""
+    },
+    {
+      "key": "authId",
+      "value": ""
+    },
+    {
+      "key": "new_driver_id",
+      "value": ""
+    },
+    {
+      "key": "RC_image_id",
+      "value": ""
+    },
+    {
+      "key": "DL_image_id",
+      "value": ""
+    },
+    {
+      "key": "new_driver_token",
+      "value": ""
+    },
+    {
+      "key": "driver_updated_number",
+      "value": ""
+    },
+    {
+      "key": "merchant_id",
+      "value": "NAMMA_YATRI_PARTNER"
+    },
+    {
+      "key": "merchantId",
+      "value": ""
+    },
+    {
+      "key": "merchantOperatingCity",
+      "value": ""
+    }
+  ]
+}

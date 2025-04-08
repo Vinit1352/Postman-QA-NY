@@ -1,0 +1,1471 @@
+{
+  "info": {
+    "_postman_id": "2cfb1868-9b0e-4638-93cb-e16c314a2fae",
+    "name": "BAP_BPP Dashboard Volunteer Ride Flow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2024-12-24T07:36:01.000Z",
+    "createdAt": "2024-12-24T07:36:00.000Z",
+    "lastUpdatedBy": "38579165",
+    "uid": "38579165-2cfb1868-9b0e-4638-93cb-e16c314a2fae"
+  },
+  "item": [
+    {
+      "name": "BAP/user/login",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "d20ba6e9-e9ca-4660-ab5f-538be1f0c991"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Verified whether status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.collectionVariables.set(\"authToken\",obj.authToken);"
+            ],
+            "type": "text/javascript",
+            "id": "c0945999-0215-49be-86ea-6d3ccad8e8da"
+          }
+        }
+      ],
+      "id": "94a45e04-f17a-4773-b735-f343a817b5e4",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"vinay.kogalimathada@juspay.in\",\n  \"password\": \"9164997783\"\n  \n}"
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/user/login",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            "user",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-94a45e04-f17a-4773-b735-f343a817b5e4"
+    },
+    {
+      "name": "Bap/switchMerchantAndCity",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000);",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "622a7b47-6495-4a17-8f48-ee26d6420176"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj =JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.collectionVariables.set(\"authToken\",obj.authToken);",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "d1c83971-58c3-4903-9dc9-edb974548a88"
+          }
+        }
+      ],
+      "id": "5c8655e8-52cd-4ad7-8f98-7ae78e44ce08",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"city\": \"Kolkata\",\n  \"merchantId\": \"JATRI_SAATHI\",\n  \"otp\" :\"7891\"\n}"
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/user/switchMerchantAndCity",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            "user",
+            "switchMerchantAndCity"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-5c8655e8-52cd-4ad7-8f98-7ae78e44ce08"
+    },
+    {
+      "name": "BAP/registration/auth",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj= JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.collectionVariables.set(\"userAuthId\",obj.authId);"
+            ],
+            "type": "text/javascript",
+            "id": "fdacf4ca-3935-4388-84a2-bace6c6cde9d"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000);"
+            ],
+            "type": "text/javascript",
+            "id": "7098962b-7a38-40cd-ad2b-f73311b2d3fb"
+          }
+        }
+      ],
+      "id": "aafab74f-b03f-4648-ac95-033aac1a9572",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mobileNumber\": \"9752771802\",\n  \"mobileCountryCode\": \"+91\",\n  \"otpChannel\": \"SMS\"\n}"
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/:merchantId/:city/rideBooking/registration/auth",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            ":merchantId",
+            ":city",
+            "rideBooking",
+            "registration",
+            "auth"
+          ],
+          "variable": [
+            {
+              "id": "b82f3289-d51a-405b-ac50-609850858d2e",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "72848b34-b47f-442e-9f79-dc3aae143df2",
+              "key": "city",
+              "value": "Kolkata"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-aafab74f-b03f-4648-ac95-033aac1a9572"
+    },
+    {
+      "name": "BAP/registration/RegAuthId/verify",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "//pm.collectionVariables.set(\"token\", obj.token);",
+              "pm.collectionVariables.set(\"personId\",obj.person.id);"
+            ],
+            "type": "text/javascript",
+            "id": "71c3594d-e594-4dbb-a8a9-f1e5f88ac131"
+          }
+        }
+      ],
+      "id": "ec433b73-94b1-44dd-b77d-7fe0bc5f9067",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": "{{apiKey}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"otp\": \"7891\",\n  \"deviceToken\": \"9985n5dc-99a0-4306-b90d-2345f3417822\"\n}"
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/:merchantId/rideBooking/registration/:RegAuthId/verify",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            ":merchantId",
+            "rideBooking",
+            "registration",
+            ":RegAuthId",
+            "verify"
+          ],
+          "variable": [
+            {
+              "id": "6bad96a3-46b6-4970-99bf-b7a0105e451d",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "08a34466-f38d-4fd1-855c-cb98df017943",
+              "key": "RegAuthId",
+              "value": "{{userAuthId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-ec433b73-94b1-44dd-b77d-7fe0bc5f9067"
+    },
+    {
+      "name": "BAP/rideBooking/profile/detail",
+      "id": "ab6ca90b-2c03-4ffb-bddb-ac161768d2c5",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": "7cae950d-49f8-4dda-a7a6-1ba04d463adf"
+          }
+        ],
+        "url": {
+          "raw": "{{BAP_dashboard}}/:merchantId/rideBooking/profile/detail/:personId",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            ":merchantId",
+            "rideBooking",
+            "profile",
+            "detail",
+            ":personId"
+          ],
+          "variable": [
+            {
+              "id": "1d779263-58d3-4b62-9b33-2ae4aecba1ff",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "d9f8deed-8cc7-417e-a2f8-edd998f2a35c",
+              "key": "personId",
+              "value": "{{personId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-ab6ca90b-2c03-4ffb-bddb-ac161768d2c5"
+    },
+    {
+      "name": "bap/rideBooking/rideSearch",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"searchId\",obj.searchId);"
+            ],
+            "type": "text/javascript",
+            "id": "4c953f5e-b89f-4a30-9c2a-06f3922652c9"
+          }
+        }
+      ],
+      "id": "e6dd6e97-1ff7-4576-a8c3-f1afb9b108b7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"fareProductType\": \"ONE_WAY\",\n    \"contents\": {\n        \"origin\": {\n            \"address\": {\n                \"area\": \"8th Block Koramangala\",\n                \"areaCode\": \"560047\",\n                \"building\": \"Juspay Buildings\",\n                \"city\": \"Bangalore\",\n                \"country\": \"India\",\n                \"door\": \"#444\",\n                \"street\": \"18th Main\",\n                \"state\": \"Karnataka\"\n            },\n            \"gps\": {\n                \"lat\": 26.72408774809747, \n                \"lon\": 88.41370245718534\n            }\n        },\n        \"destination\": {\n            \"address\": {\n                \"area\": \"6th Block Koramangala\",\n                \"areaCode\": \"560047\",\n                \"building\": \"Juspay Apartments\",\n                \"city\": \"Bangalore\",\n                \"country\": \"India\",\n                \"door\": \"#444\",\n                \"street\": \"18th Main\",\n                \"state\": \"Karnataka\"\n            },\n            \"gps\": {\n                \"lat\": 26.726056374506975,\n                \"lon\": 88.39345205145962\n            }\n        }\n    }\n}"
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/:merchantId/rideBooking/search/:personId/rideSearch",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            ":merchantId",
+            "rideBooking",
+            "search",
+            ":personId",
+            "rideSearch"
+          ],
+          "variable": [
+            {
+              "id": "7f59fa6a-84e9-4e2b-9888-689cd7091ff9",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "907d9e83-8d72-40de-b204-9d330c6e6827",
+              "key": "personId",
+              "value": "{{personId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-e6dd6e97-1ff7-4576-a8c3-f1afb9b108b7"
+    },
+    {
+      "name": "BAP/rideBooking/result",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "var count= obj.quotes.length;",
+              "",
+              "for(var index=0;index<count;index++)",
+              "{ ",
+              "    if(obj.quotes[index].onDemandCab.vehicleVariant == \"HATCHBACK\")",
+              "    {   ",
+              "        console.log(obj.quotes[index].onDemandCab.vehicleVariant);  ",
+              "        pm.collectionVariables.set(\"quoteId\",obj.quotes[index].onDemandCab.id);",
+              "    }",
+              "}",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "00ca4d59-17cf-4352-aa37-b33a10622c17"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},4000);"
+            ],
+            "type": "text/javascript",
+            "id": "a10eaa6e-f2d1-4c27-a5b2-2461aad5f89e"
+          }
+        }
+      ],
+      "id": "ba77ac98-097f-425c-b939-85f6ab6c5cf3",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/:merchantId/rideBooking/quote/:searchId/:personId/result",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            ":merchantId",
+            "rideBooking",
+            "quote",
+            ":searchId",
+            ":personId",
+            "result"
+          ],
+          "variable": [
+            {
+              "id": "65a1c9fb-5d5c-4bd9-9ca2-137394895360",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "b42388ff-33d8-48ca-9158-a39c7d4a9a59",
+              "key": "searchId",
+              "value": "{{searchId}}"
+            },
+            {
+              "id": "47017859-9c36-4066-b596-286adf353149",
+              "key": "personId",
+              "value": "{{personId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-ba77ac98-097f-425c-b939-85f6ab6c5cf3"
+    },
+    {
+      "name": "BAP/rideSearch/quotes/confirm",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"bookingId\",\"obj.bookingId\");"
+            ],
+            "type": "text/javascript",
+            "id": "325472a0-4df0-45b3-9fce-69d02b140218"
+          }
+        }
+      ],
+      "id": "c1baa68e-c6d6-4a0f-9519-82ebd562850f",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": ""
+          }
+        ],
+        "url": {
+          "raw": "{{BAP_dashboard}}/:merchantId/rideBooking/confirm/rideSearch/:personId/quotes/:quoteId/confirm",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            ":merchantId",
+            "rideBooking",
+            "confirm",
+            "rideSearch",
+            ":personId",
+            "quotes",
+            ":quoteId",
+            "confirm"
+          ],
+          "variable": [
+            {
+              "id": "ea606c99-7880-4caa-971d-f99f88ac0dd9",
+              "key": "merchantId",
+              "value": "JATRI_SAATHI"
+            },
+            {
+              "id": "8eafa6f9-65a5-4d75-b144-cce2aed0fe91",
+              "key": "personId",
+              "value": "{{personId}}"
+            },
+            {
+              "id": "8822e788-ae5d-4a36-a377-a27aa01478c1",
+              "key": "quoteId",
+              "value": "{{quoteId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-c1baa68e-c6d6-4a0f-9519-82ebd562850f"
+    },
+    {
+      "name": "rideBooking/booking/list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.collectionVariables.set(\"userotp\",obj.list[0].bookingDetails.contents.otpCode)"
+            ],
+            "type": "text/javascript",
+            "id": "5bd77128-f706-4412-af56-c62f22f3cf04"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},5000);"
+            ],
+            "type": "text/javascript",
+            "id": "e3191ac9-c26b-4d69-afc4-d682929290da"
+          }
+        }
+      ],
+      "id": "fecea145-4711-4203-8da2-73d88b0a3bf6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{authToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BAP_dashboard}}/JATRI_SAATHI/rideBooking/booking/list/:customerId?onlyActive=true",
+          "host": [
+            "{{BAP_dashboard}}"
+          ],
+          "path": [
+            "JATRI_SAATHI",
+            "rideBooking",
+            "booking",
+            "list",
+            ":customerId"
+          ],
+          "query": [
+            {
+              "key": "onlyActive",
+              "value": "true"
+            }
+          ],
+          "variable": [
+            {
+              "id": "07165797-c808-4a76-8426-f5c8cc0e04ba",
+              "key": "customerId",
+              "value": "{{personId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-fecea145-4711-4203-8da2-73d88b0a3bf6"
+    },
+    {
+      "name": "BPP/user/login",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set(\"BPP_user_mail\", \"vinay.kogalimathada@juspay.in\");",
+              "pm.collectionVariables.set(\"BPP_user_password\", \"9164997783\");"
+            ],
+            "type": "text/javascript",
+            "id": "5eae80cd-5b69-4eab-a8ec-cd41c7a969dc"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"bppauthToken\", obj.authToken);"
+            ],
+            "type": "text/javascript",
+            "id": "d10af1cb-2c32-419a-ae80-dcb7a77fc3f5"
+          }
+        }
+      ],
+      "id": "81134e44-2d23-432e-a8c0-6589b1b3ec8b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"email\": \"{{BPP_user_mail}}\",\n\"password\": \"{{BPP_user_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/login",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "user",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-81134e44-2d23-432e-a8c0-6589b1b3ec8b"
+    },
+    {
+      "name": "BPP/switchMerchantAndCity",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000);",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "a39cefda-99c6-4d7f-804e-22aec1e25193"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.collectionVariables.set(\"cityauthToken\",obj.authToken);",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "4b0a80e8-37b3-45b4-a792-bc213356ad90"
+          }
+        }
+      ],
+      "id": "861a2dc2-554c-4b9c-87ca-335670578f1e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{bppauthToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"city\": \"Siliguri\",\n  \"merchantId\": \"JATRI_SAATHI_PARTNER\",\n    \"otp\" :\"7891\"\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/user/switchMerchantAndCity",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "user",
+            "switchMerchantAndCity"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-861a2dc2-554c-4b9c-87ca-335670578f1e"
+    },
+    {
+      "name": "BPP/volunteer/otp/booking",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"bookingId\", obj.bookingId);"
+            ],
+            "type": "text/javascript",
+            "id": "d6701dee-a88a-4284-9eca-55b485264d02"
+          }
+        }
+      ],
+      "id": "1b9ee0f2-6cfe-4a14-9e63-ee3cef7844df",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{cityauthToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "8acf8129-fc3b-476e-bdfc-b8ee4e4fd9c5"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/siliguri/volunteer/:userOtp/booking",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "siliguri",
+            "volunteer",
+            ":userOtp",
+            "booking"
+          ],
+          "variable": [
+            {
+              "id": "023f9636-046a-4470-b587-af33940e15ea",
+              "key": "userOtp",
+              "value": "{{userotp}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-1b9ee0f2-6cfe-4a14-9e63-ee3cef7844df"
+    },
+    {
+      "name": "driver/auth",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"dauthId\", obj.authId);"
+            ],
+            "type": "text/javascript",
+            "id": "de1724e3-3032-4ef7-a0f6-f36700a2b44e"
+          }
+        }
+      ],
+      "id": "ede37dac-b025-4335-a46e-4bd8303fecf8",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"mobileNumber\": \"6754545455\",\n    \"mobileCountryCode\": \"+91\",\n    \"merchantId\": \"96dd7f78-787e-4a0b-8675-e9e6fe93bb8f\"\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/auth",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "auth"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-ede37dac-b025-4335-a46e-4bd8303fecf8"
+    },
+    {
+      "name": "driver/auth/verify",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.collectionVariables.set (\"driverId\", obj.person.id);",
+              "console.log(pm.collectionVariables.get(\"driverId\"))",
+              "pm.collectionVariables.set (\"dtoken\", obj.token);"
+            ],
+            "type": "text/javascript",
+            "id": "3905cce9-aea8-46ba-8b4a-a3024352337e"
+          }
+        }
+      ],
+      "id": "e9344101-a2e5-490f-b2c6-2b19d5b47bf7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "token",
+            "value": "••••••",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"otp\": \"7891\",\n    \"deviceToken\": \"8e83b5dc-99a0-4306-b90d-2345f3050972\"\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/auth/:authId/verify",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "auth",
+            ":authId",
+            "verify"
+          ],
+          "variable": [
+            {
+              "id": "d17c2aa1-2292-452a-b8d2-9aceb84a0add",
+              "key": "authId",
+              "value": "{{dauthId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-e9344101-a2e5-490f-b2c6-2b19d5b47bf7"
+    },
+    {
+      "name": "BPP/volunteer/assign/start",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "f3376063-954a-4b2f-b4c1-3a2bbb0b5654"
+          }
+        }
+      ],
+      "id": "edd6fd57-4d06-477a-bb35-3a054cb533b7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{cityauthToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": "8acf8129-fc3b-476e-bdfc-b8ee4e4fd9c5"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"bookingId\": \"{{bookingId}}\",\n  \"driverId\": \"{{driverId}}\",\n  \"point\": {\n    \"lat\": 22.6533,\n    \"lon\": 88.4447\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/siliguri/volunteer/assign/start",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "siliguri",
+            "volunteer",
+            "assign",
+            "start"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-edd6fd57-4d06-477a-bb35-3a054cb533b7"
+    },
+    {
+      "name": "driver/ride/list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const obj = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.collectionVariables.set(\"rideId\", obj.list[0].id);"
+            ],
+            "type": "text/javascript",
+            "id": "d149e6e3-95ac-4f6c-a7d0-1464778f4374"
+          }
+        }
+      ],
+      "id": "2860ba8e-3911-45be-bff4-c04c98f3e6e0",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{dtoken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "••••••"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/ride/list?limit=10",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "ride",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-2860ba8e-3911-45be-bff4-c04c98f3e6e0"
+    },
+    {
+      "name": "BPP/ride/end",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "id": "218d7928-0e31-4d8b-9324-02127a3a5ab1"
+          }
+        }
+      ],
+      "id": "8a77134f-295b-41d0-abf7-bc002c4ff6f9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{cityauthToken}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "token",
+            "value": "8acf8129-fc3b-476e-bdfc-b8ee4e4fd9c5"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"point\": {\n    \"lat\": 22.65329522662165,\n    \"lon\": 88.44471964183015\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_BPP_Dashboard}}/bpp/driver-offer/JATRI_SAATHI_PARTNER/siliguri/ride/:rideId/end",
+          "host": [
+            "{{baseURL_BPP_Dashboard}}"
+          ],
+          "path": [
+            "bpp",
+            "driver-offer",
+            "JATRI_SAATHI_PARTNER",
+            "siliguri",
+            "ride",
+            ":rideId",
+            "end"
+          ],
+          "variable": [
+            {
+              "id": "58577527-aa9a-4e4a-88d3-8590a589ef10",
+              "key": "rideId",
+              "value": "{{rideId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-8a77134f-295b-41d0-abf7-bc002c4ff6f9"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ],
+        "id": "f9a5c527-6a6f-49ba-8292-b76674d33ead"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ],
+        "id": "9d46d9d7-a088-46b6-968d-0796df31bae7"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "userAuth",
+      "value": ""
+    },
+    {
+      "key": "userAuthId",
+      "value": ""
+    },
+    {
+      "key": "personId",
+      "value": ""
+    },
+    {
+      "key": "searchId",
+      "value": ""
+    },
+    {
+      "key": "splquoteId",
+      "value": ""
+    },
+    {
+      "key": "quoteId",
+      "value": ""
+    },
+    {
+      "key": "userotp",
+      "value": ""
+    },
+    {
+      "key": "BPP_user_mail",
+      "value": ""
+    },
+    {
+      "key": "BPP_user_password",
+      "value": ""
+    },
+    {
+      "key": "bppauthToken",
+      "value": ""
+    },
+    {
+      "key": "bookingId",
+      "value": ""
+    },
+    {
+      "key": "cityauthToken",
+      "value": ""
+    },
+    {
+      "key": "dauthId",
+      "value": ""
+    },
+    {
+      "key": "driverId",
+      "value": ""
+    },
+    {
+      "key": "dtoken",
+      "value": ""
+    },
+    {
+      "key": "rideId",
+      "value": ""
+    },
+    {
+      "key": "authToken",
+      "value": ""
+    }
+  ]
+}

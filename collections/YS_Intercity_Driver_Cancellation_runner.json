@@ -1,0 +1,1473 @@
+{
+  "info": {
+    "_postman_id": "ee2b7b27-4f31-4f54-89de-e0cda41f3be7",
+    "name": "YS Intercity Driver Cancellation runner",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "updatedAt": "2025-01-21T13:47:08.000Z",
+    "createdAt": "2024-12-24T07:41:02.000Z",
+    "lastUpdatedBy": "38579944",
+    "uid": "38579165-ee2b7b27-4f31-4f54-89de-e0cda41f3be7"
+  },
+  "item": [
+    {
+      "name": "Drivernumber",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// var jsonData = JSON.parse(responseBody);",
+              "",
+              "var responseBody = pm.response.json()",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"rider_authId\", responseBody.authId);"
+            ],
+            "type": "text/javascript",
+            "id": "cf332d44-a958-4be3-b586-e51e0964142e"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "/*if(pm.info.iteration>0)",
+              "{",
+              "    postman.setNextRequest(\"RideSearch\")",
+              "}*/",
+              "",
+              "pm.collectionVariables.set(\"driver_number\", 9380357679)",
+              "pm.collectionVariables.set(\"rideStarted\", false)",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "039b9cde-3e13-4b9c-a753-46d42b5f1d85"
+          }
+        }
+      ],
+      "id": "9ada3a15-a135-474d-b707-01411cbb5b8e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"mobileNumber\": \"{{driver_number}}\",\n    \"mobileCountryCode\" : \"+91\",\n    \"merchantId\": \"96dd7f78-787e-4a0b-8675-e9e6fe93bb8f\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/auth",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "auth"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-9ada3a15-a135-474d-b707-01411cbb5b8e"
+    },
+    {
+      "name": "DriverOTP",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// var response = JSON.parse(responseBody);",
+              "var responseBody = pm.response.json()",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "pm.collectionVariables.set(\"rider_token\", responseBody.token);",
+              "pm.collectionVariables.set(\"driver_id\", responseBody.person.id)"
+            ],
+            "type": "text/javascript",
+            "id": "35f87c3d-0119-41d1-9148-a54a2ab66461"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},1000)"
+            ],
+            "type": "text/javascript",
+            "id": "0470f24c-7b79-40a9-b853-d1084004e36c"
+          }
+        }
+      ],
+      "id": "34e3593b-8162-48b3-9f17-0fac519eb4ad",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"otp\" : \"7891\",\n    \"deviceToken\" : \"5481873d-10ca-42f3-8a32-22de4c916026\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/auth/:authId/verify",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "auth",
+            ":authId",
+            "verify"
+          ],
+          "variable": [
+            {
+              "id": "fd7efad2-9f87-4110-9475-56b843f313b5",
+              "key": "authId",
+              "value": "{{rider_authId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-34e3593b-8162-48b3-9f17-0fac519eb4ad"
+    },
+    {
+      "name": "Driverlocation",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "var moment = require('moment');",
+              "pm.globals.set(\"current_time\", moment.utc().format(\"YYYY-MM-DDTHH:mm:ssZ\"));",
+              "",
+              "setTimeout(function(){},2000)",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "efd36d77-4167-4f0c-b00f-54f301909a21"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    console.log('req', request)",
+              "    console.log('res', responseBody)",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "bf767a70-b77b-4000-a825-6b8448188219"
+          }
+        }
+      ],
+      "id": "eb1fa1b8-b716-42b2-b9e9-d0285cb49a1d",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {},
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Typevi",
+            "value": "application/json;charset=utf-8",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "mId",
+            "value": "7f7896dd-787e-4a0b-8675-e9e6fe93bb8f",
+            "type": "text"
+          },
+          {
+            "key": "vt",
+            "value": "HATCHBACK",
+            "type": "text"
+          },
+          {
+            "key": "dm",
+            "value": "ONLINE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"pt\": {\n                \"lat\":22.574384690465116, \n                \"lon\":88.36285896555124 \n            },\n        \"ts\": \"{{current_time}}\"\n    }\n]\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/location",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "location"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-eb1fa1b8-b716-42b2-b9e9-d0285cb49a1d"
+    },
+    {
+      "name": "Driversetactivity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var responseBody = pm.response.json()",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "",
+              "pm.test(\"Result - Successful\", function() {",
+              "    pm.expect(responseBody.result).to.be.equal(\"Success\")",
+              "})",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "049ee1ea-282b-4bab-a4d1-53391126c15c"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000)"
+            ],
+            "type": "text/javascript",
+            "id": "3a0007a8-690c-4d12-8ab0-f11dff4d10d5"
+          }
+        }
+      ],
+      "id": "3b83aedd-3518-4e44-9622-4420f9e13cf7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/setActivity?active=true&mode=\"ONLINE\"",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "setActivity"
+          ],
+          "query": [
+            {
+              "key": "active",
+              "value": "true"
+            },
+            {
+              "key": "mode",
+              "value": "\"ONLINE\""
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-3b83aedd-3518-4e44-9622-4420f9e13cf7"
+    },
+    {
+      "name": "{{baseURL_namma_P}}driver/profile Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});"
+            ],
+            "type": "text/javascript",
+            "id": "889ab5c6-04d3-4561-a40d-5af35cdeaa7d"
+          }
+        }
+      ],
+      "id": "89e59457-9ea6-4ea4-bd32-503d33847ff9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json;charset=utf-8"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json;charset=utf-8"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"availableUpiApps\": \"string\",\n  \"bundleVersion\": {\n    \"build\": \"string\",\n    \"maintenance\":0,\n    \"major\": 1,\n    \"minor\": 0,\n    \"preRelease\": \"string\"\n  },\n  \"canDowngradeToHatchback\": false,\n  \"canDowngradeToSedan\": false,\n  \"canDowngradeToTaxi\": true,\n  \"canSwitchToInterCity\": true,\n  \"canSwitchToRental\": true,\n  \"clientVersion\": {\n    \"build\": \"string\",\n    \"maintenance\":0,\n    \"major\": 1,\n    \"minor\": 0,\n    \"preRelease\": \"string\"\n  },\n  \"deviceToken\": \"string\",\n  \"firstName\": \"string\",\n  \"gender\": \"MALE\",\n  \"hometown\": \"string\",\n  \"language\": \"ENGLISH\",\n  \"languagesSpoken\": [\n    \"string\"\n  ],\n  \"lastName\": \"string\",\n  \"middleName\": \"string\",\n  \"vehicleName\": \"string\"\n}"
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/profile",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "profile"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-89e59457-9ea6-4ea4-bd32-503d33847ff9"
+    },
+    {
+      "name": "Driverprofile",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "1aa6fcd4-0b6b-42bb-85e9-5819e4f3aedf"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},1000)"
+            ],
+            "type": "text/javascript",
+            "id": "d147a7a8-a055-4575-859a-901aa1d750bb"
+          }
+        }
+      ],
+      "id": "940ccc3e-6d77-46cb-967c-d6af0f2e133f",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/profile",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "profile"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-940ccc3e-6d77-46cb-967c-d6af0f2e133f"
+    },
+    {
+      "name": "Usernumber",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f84d3761-81f1-48f2-a225-78234c7f8cee",
+            "exec": [
+              "var responseBody = pm.response.json()",
+              "",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"user_authIdId\", responseBody.authId);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "edbc961e-b026-42d3-9d03-81c4ee65710d",
+            "exec": [
+              "pm.collectionVariables.set(\"user_number\", 8703314338)",
+              "",
+              "setTimeout(function(){},1000)"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "dbc9fb6e-dce3-4237-a79c-73866eca1258",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"mobileNumber\" : \"{{user_number}}\",\n    \"mobileCountryCode\" : \"+91\",\n    \"merchantId\" : \"JATRI_SAATHI\"\n}\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl_app}}/auth",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "auth"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-dbc9fb6e-dce3-4237-a79c-73866eca1258"
+    },
+    {
+      "name": "UserOtp",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var responseBody = pm.response.json()",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "",
+              "pm.test(\"Token is not null\", function() {",
+              "    pm.expect(responseBody.token).to.be.not.eql(null)",
+              "})",
+              "",
+              "pm.collectionVariables.set(\"curr_user_token\", responseBody.token);"
+            ],
+            "type": "text/javascript",
+            "id": "d67e7ce0-b2bd-44f0-93a0-2196312acec5"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},1000)"
+            ],
+            "type": "text/javascript",
+            "id": "ab36f961-7954-4801-be8a-15f74b8d8b0f"
+          }
+        }
+      ],
+      "id": "55bcfc8a-bfa3-40fa-a19e-536efeabd910",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{curr_user_authId}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"otp\" : \"7891\",\n    \"deviceToken\" : \"9967e5dc-99a0-4306-b90d-2345f3787822\" \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl_app}}/auth/:authId/verify",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "auth",
+            ":authId",
+            "verify"
+          ],
+          "variable": [
+            {
+              "id": "b2c99d00-5543-4356-9004-c67f474cd088",
+              "key": "authId",
+              "value": "{{user_authIdId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-55bcfc8a-bfa3-40fa-a19e-536efeabd910"
+    },
+    {
+      "name": "RideSearch",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var responseBody = pm.response.json()",
+              "",
+              " pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "",
+              "});",
+              "",
+              "pm.collectionVariables.set(\"curr_searchId\", responseBody.searchId);",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "3c4245ff-f099-47ac-909d-265021729ee2"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "098f9532-805e-4b9b-bf1a-39db13ec7f8d"
+          }
+        }
+      ],
+      "id": "c02340bd-df3a-4400-aa79-da1a98acd60b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{curr_user_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"fareProductType\": \"ONE_WAY\",\n    \"contents\": {\n        \"origin\": {\n            \"address\": {\n                \"area\": \"8th Block Koramangala\",\n                \"areaCode\": \"560047\",\n                \"building\": \"Juspay Buildings\",\n                \"city\": \"Bangalore\",\n                \"country\": \"India\",\n                \"door\": \"#444\",\n                \"street\": \"18th Main\",\n                \"state\": \"Karnataka\"\n            },\n            \"gps\": {\n               \"lat\":22.574384690465116, \n                \"lon\":88.36285896555124 \n            }\n        },\n        \"autoAssignEnabledV2\": true,\n        \"autoAssignEnabled\": true,\n        \"destination\": {\n            \"address\": {\n                \"area\": \"6th Block Koramangala\",\n                \"areaCode\": \"560047\",\n                \"building\": \"Juspay Apartments\",\n                \"city\": \"Bangalore\",\n                \"country\": \"India\",\n                \"door\": \"#444\",\n                \"street\": \"18th Main\",\n                \"state\": \"Karnataka\"\n            },\n            \"gps\": {\n                \"lat\": 22.886020851427872,\n                \"lon\": 88.01714928471411\n            }\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl_app}}/rideSearch",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "rideSearch"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-c02340bd-df3a-4400-aa79-da1a98acd60b"
+    },
+    {
+      "name": "SearchIdResults",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "var quoteslen = jsonData.quotes.length;",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "    });",
+              "for (var i = 0; i < quoteslen; i++ )",
+              "{",
+              "if ( (jsonData.quotes[i].onDemandCab.agencyName === \"YATRI_SAATHI\") && (jsonData.quotes[i].onDemandCab.vehicleVariant === \"SEDAN\")) {",
+              "pm.collectionVariables.set(\"EstiSedan\", jsonData.quotes[i].onDemandCab.id);",
+              "console.log(jsonData.quotes[i].onDemandCab.id + \"SedanEstimateId\")",
+              "}",
+              "}",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "08c46fe8-c598-459e-98f0-d80fe9a54686"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},3000)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "9a1c0437-f467-40d9-8a79-97fbdedc998f"
+          }
+        }
+      ],
+      "id": "0f7173ad-965b-4292-9fa7-663bc0ac886b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{curr_user_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "{{curr_user_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl_app}}/rideSearch/:searchId/results",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "rideSearch",
+            ":searchId",
+            "results"
+          ],
+          "variable": [
+            {
+              "id": "4bc6b4ab-61b4-4a87-a797-e1ef6715e447",
+              "key": "searchId",
+              "value": "{{curr_searchId}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-0f7173ad-965b-4292-9fa7-663bc0ac886b"
+    },
+    {
+      "name": "/rideSearch/quotes/:quoteId/confirm",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "pm.collectionVariables.set(\"bookingId\",body.bookingId);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "7328a151-be55-4b6c-b8eb-454657c578f3"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},3000)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "id": "e228281f-2379-4e71-a056-c2cfa8c1bbe5"
+          }
+        }
+      ],
+      "id": "32d4dea8-29c2-49c3-99e8-46ba7dd1daf5",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{curr_user_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "{{app-reg-token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl_app}}/rideSearch/quotes/:quoteId/confirm",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "rideSearch",
+            "quotes",
+            ":quoteId",
+            "confirm"
+          ],
+          "variable": [
+            {
+              "id": "b4598a85-9045-4861-a990-37d0afebdaa5",
+              "key": "quoteId",
+              "value": "{{EstiSedan}}",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-32d4dea8-29c2-49c3-99e8-46ba7dd1daf5"
+    },
+    {
+      "name": "nearbyRideRequest",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c13d3971-31fb-47d7-848c-b9bb10fb299b",
+            "exec": [
+              "var responseBody = pm.response.json()",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "    ",
+              "});",
+              "pm.test(\"searchRequestsForDriver is not null\", function() {",
+              "    pm.expect(responseBody.searchRequestsForDriver).to.be.not.eql(null)",
+              "})",
+              "pm.collectionVariables.set(\"searchReq_Id\", responseBody.searchRequestsForDriver[0].searchRequestId)"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b0fc48ca-0c2a-4a71-8dd7-0e25de33b3c5",
+            "exec": [
+              "setTimeout(function(){},3000)"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "id": "f212af53-f948-4842-aeba-f0ac9849327d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/nearbyRideRequest",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "nearbyRideRequest"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-f212af53-f948-4842-aeba-f0ac9849327d"
+    },
+    {
+      "name": "quoteOffer",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "console.log(pm.collectionVariables.get(\"searchReq_Id\"))",
+              "setTimeout(function(){},2000)"
+            ],
+            "type": "text/javascript",
+            "id": "1e2db284-4911-4033-8a3a-8359c9b72d7d"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var responseBody = pm.response.json()",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "});",
+              "pm.test(\"Result - Successful\", function() {",
+              "    pm.expect(responseBody.result).to.be.equal(\"Success\")",
+              "})",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "be0b083c-55ad-4ff4-9c60-0a7978250884"
+          }
+        }
+      ],
+      "id": "467787db-98d6-4c30-b10c-896aec2448b7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"searchRequestId\":\"{{searchReq_Id}}\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/searchRequest/quote/offer",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "searchRequest",
+            "quote",
+            "offer"
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-467787db-98d6-4c30-b10c-896aec2448b7"
+    },
+    {
+      "name": "driverRideList",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    console.log('req', request)",
+              "     console.log('res', responseBody)",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.collectionVariables.set(\"DriverRide_id\", jsonData.list[0].id);",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "20a3a4fd-cdcf-4687-9113-eb5960772139"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000)"
+            ],
+            "type": "text/javascript",
+            "id": "c7429540-3c97-4d19-9fe0-a39551127ba5"
+          }
+        }
+      ],
+      "id": "45e66942-5d63-4209-9a08-312960dc3386",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/ride/list?limit=30&onlyActive=true",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "ride",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "30"
+            },
+            {
+              "key": "onlyActive",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-45e66942-5d63-4209-9a08-312960dc3386"
+    },
+    {
+      "name": "UserBookingList",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.test(\"Status code is 200\", function () {",
+              "    console.log('req', request)",
+              "    console.log('res', responseBody)",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "let rideStarted= pm.collectionVariables.get(\"rideStarted\")",
+              "if(rideStarted === true)",
+              "{",
+              "    pm.collectionVariables.set(\"intercityEndRideOtp\",jsonData.list[0].rideList[0].endOtp)",
+              "    postman.setNextRequest(\"EndRide\")",
+              "}",
+              "else",
+              "{",
+              "pm.collectionVariables.set(\"startOtp\", jsonData.list[0].rideList[0].rideOtp);",
+              "}",
+              "pm.collectionVariables.set(\"BookingID\",jsonData.list[0].rideList[0].id)"
+            ],
+            "type": "text/javascript",
+            "id": "2e9b044f-24c5-4c40-87eb-568f4fa7a6a5"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "setTimeout(function(){},2000)",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "id": "bf1ad3f0-2100-4830-97db-0321f5f99021"
+          }
+        }
+      ],
+      "id": "6af636e1-5df9-43a3-aa34-794ac2c77b52",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{curr_user_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl_app}}/rideBooking/list?limit=20&onlyActive=true",
+          "host": [
+            "{{baseUrl_app}}"
+          ],
+          "path": [
+            "rideBooking",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "20"
+            },
+            {
+              "key": "onlyActive",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-6af636e1-5df9-43a3-aa34-794ac2c77b52"
+    },
+    {
+      "name": "driver/ride/rideId/cancel",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    console.log('req', request)",
+              "    console.log('res', responseBody)",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "id": "a5685c87-c41f-4cb0-a301-1001b811d639"
+          }
+        }
+      ],
+      "id": "7f643f1f-b830-4935-a378-4b5850681309",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "{{rider_token}}",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "token",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "{{app-reg-token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"reasonCode\": \"aliquip\",\n    \"additionalInfo\": \"nostrud dolore dolor occaecat esse\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL_namma_P}}/driver/ride/:rideId/cancel",
+          "host": [
+            "{{baseURL_namma_P}}"
+          ],
+          "path": [
+            "driver",
+            "ride",
+            ":rideId",
+            "cancel"
+          ],
+          "variable": [
+            {
+              "id": "2e55b5cf-c603-492d-896f-1621d4a79fe7",
+              "key": "rideId",
+              "value": "{{DriverRide_id}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "uid": "38579165-7f643f1f-b830-4935-a378-4b5850681309"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ],
+        "id": "ef7c1b36-6de7-472f-9e18-7d9140520f81"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ],
+        "id": "638686ba-ea21-4828-9712-9ee3b8f91b3f"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "driver_number",
+      "value": ""
+    },
+    {
+      "key": "user_number",
+      "value": ""
+    },
+    {
+      "key": "rider_token",
+      "value": ""
+    },
+    {
+      "key": "driver_id",
+      "value": ""
+    },
+    {
+      "key": "user_authIdId",
+      "value": ""
+    },
+    {
+      "key": "curr_searchId",
+      "value": ""
+    },
+    {
+      "key": "estimate_id",
+      "value": ""
+    },
+    {
+      "key": "searchReq_Id",
+      "value": ""
+    },
+    {
+      "key": "quote_id",
+      "value": ""
+    },
+    {
+      "key": "DriverRide_id",
+      "value": ""
+    },
+    {
+      "key": "otp",
+      "value": ""
+    },
+    {
+      "key": "curr_user_token",
+      "value": ""
+    },
+    {
+      "key": "curr_rider_authId",
+      "value": ""
+    },
+    {
+      "key": "rider_authId",
+      "value": ""
+    },
+    {
+      "key": "EstiSedan",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "curr_estimateid",
+      "value": ""
+    },
+    {
+      "key": "EstiAuto",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "rideStarted",
+      "value": ""
+    },
+    {
+      "key": "startOtp",
+      "value": ""
+    },
+    {
+      "key": "rideAssigned",
+      "value": ""
+    },
+    {
+      "key": "intercityEndRideOtp",
+      "value": ""
+    },
+    {
+      "key": "BookingID",
+      "value": ""
+    },
+    {
+      "key": "bookingId",
+      "value": ""
+    }
+  ]
+}
