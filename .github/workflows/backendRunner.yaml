@@ -1,0 +1,60 @@
+name: Run Postman Collections with Newman
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_id:
+        description: 'Commit SHA to checkout (leave empty for latest)'
+        required: false
+        default: ''
+
+jobs:
+  run-postman-collections:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.commit_id || github.ref }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      
+      - name: Install Newman and reporters
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-html
+          npm install -g newman-reporter-htmlextra
+      
+      - name: Create reports directory
+        run: mkdir -p newman-reports
+      
+      - name: Run all collections with Newman
+        run: |
+          # Set error handling
+          set -e
+          
+          # Find all collection JSON files and run them sequentially
+          for collection in collections/*.json; do
+            collection_name=$(basename "$collection" .json)
+            echo "Running collection: $collection_name"
+            
+            newman run "$collection" \
+              -e environments/Master.json \
+              -r cli,htmlextra \
+              --reporter-htmlextra-export="newman-reports/${collection_name}-report.html"
+            
+            echo "✅ Completed: $collection_name"
+          done
+          
+          echo "All collections have been processed successfully!"
+      
+      - name: Upload Newman reports
+        if: always()  # Upload reports even if previous steps failed
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-reports
+          path: newman-reports/
+          retention-days: 7
