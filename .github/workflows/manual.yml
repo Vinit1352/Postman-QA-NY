@@ -1,0 +1,66 @@
+name: Newman Collection Runner
+
+on:
+  # Manual trigger via GitHub UI
+  workflow_dispatch:
+    inputs:
+      environment_file:
+        description: 'Environment file to use'
+        required: true
+        default: 'Master.json'
+        type: choice
+        options:
+          - Master.json
+          - prod.json
+
+jobs:
+  run-collections:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Newman and Newman HTML Extra Reporter
+        run: |
+          npm install -g newman newman-reporter-htmlextra
+
+      - name: List collection files
+        id: list-collections
+        run: |
+          COLLECTIONS=$(find ./collections -name "*.json" -type f | sort)
+          echo "Found collections:"
+          echo "$COLLECTIONS"
+          echo "collections<<EOF" >> $GITHUB_ENV
+          echo "$COLLECTIONS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create report directory
+        run: mkdir -p ./newman-reports
+
+      - name: Run collections with Newman
+        run: |
+          while IFS= read -r collection; do
+            collection_name=$(basename "$collection" .json)
+            echo "Running collection: $collection_name"
+            
+            # Run Newman with the specified environment file
+            newman run "$collection" \
+              -e "./environments/${{ github.event.inputs.environment_file }}" \
+              --reporters cli,htmlextra \
+              --reporter-htmlextra-export "./newman-reports/$collection_name-report.html" || echo "Collection $collection_name failed but continuing execution"
+            
+            echo "Completed collection: $collection_name"
+            echo "---------------------------------------------"
+          done <<< "${{ env.collections }}"
+
+      - name: Upload Newman Reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: newman-reports
+          path: ./newman-reports
